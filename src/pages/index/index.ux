@@ -1,0 +1,2278 @@
+<template>
+  <div class="root" onswipe="onPageSwipe">
+    <!-- ==================== TITLE SCREEN (screenState = TITLE) ==================== -->
+    <div if="{{mode === 'title'}}" class="screen">
+      <image class="title-bg-full" src="{{titleBgSrc}}" />
+
+      <div class="title-btns" style="top: {{titleShowAkari ? 224 : 264}}px; left: {{titleBgId === 'title03' ? 14 : 108}}px;">
+        <div class="tbtn-wrap" onclick="startNewGame">
+          <image class="tbtn-img" src="/common/ui/tbtn_start.png" />
+        </div>
+        <div if="{{titleShowAkari}}" class="tbtn-wrap" onclick="startTrueRoute">
+          <image class="tbtn-img" src="/common/ui/tbtn_akari.png" />
+        </div>
+        <div class="tbtn-wrap" onclick="openTitleSlots">
+          <image class="tbtn-img" src="/common/ui/tbtn_load.png" />
+        </div>
+        <div class="tbtn-wrap" onclick="openExtraMenu">
+          <image class="tbtn-img" src="/common/ui/tbtn_extra.png" />
+        </div>
+        <div class="tbtn-wrap" onclick="openTitleSettings">
+          <image class="tbtn-img" src="/common/ui/tbtn_config.png" />
+        </div>
+        <div class="tbtn-wrap" onclick="exitApp">
+          <image class="tbtn-img" src="/common/ui/tbtn_exit.png" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== EXTRA HUB (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'extra'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">鉴赏模式 · EXTRA</text>
+        <text class="sub-back" onclick="backToTitle">返回</text>
+      </div>
+      <div class="sub-body">
+        <div class="list-btn" onclick="openChapters('all')">
+          <text class="list-btn-main">章节选择</text>
+          <text class="list-btn-meta">{{visibleChapterCount}} 节</text>
+        </div>
+        <div class="list-btn" onclick="openGallery">
+          <text class="list-btn-main">CG 鉴赏</text>
+          <text class="list-btn-meta">{{galleryGroupCount}} 组</text>
+        </div>
+        <div class="list-btn" onclick="openHScenes">
+          <text class="list-btn-main">场景回想</text>
+          <text class="list-btn-meta">9 篇</text>
+        </div>
+        <div class="list-btn" onclick="openMusicRoom">
+          <text class="list-btn-main">音乐欣赏</text>
+          <text class="list-btn-meta">3 曲</text>
+        </div>
+        <div class="list-btn" onclick="openOpPlayer">
+          <text class="list-btn-main">OP 动画鉴赏</text>
+          <text class="list-btn-meta">417 帧</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CHAPTERS LIST (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'chapters'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">章节选择 ({{chapterPage + 1}}/{{chapterTotalPages}})</text>
+        <text class="sub-back" onclick="backFromChapters">返回</text>
+      </div>
+      <div class="filter-bar">
+        <text for="{{routeTabs}}" tid="id" class="ftab" style="color: {{$item.active ? '#fff6e0' : '#a4bdcf'}}; background-color: {{$item.active ? '#5c3a10' : '#0d1d29'}}; border-color: {{$item.active ? '#cfa557' : '#0d1d29'}};" onclick="setRouteFilter($item.id)">{{$item.label}}</text>
+      </div>
+      <div class="sub-list">
+        <div for="{{chapterRows}}" tid="id" class="row-card" onclick="selectChapter($item.id)">
+          <text class="row-title">{{$item.title}}</text>
+          <text class="row-meta">{{$item.routeLabel}} · {{$item.lineCount}} 行</text>
+        </div>
+      </div>
+      <div class="pager">
+        <text class="pager-btn" onclick="prevChapterPage">‹ 上一页</text>
+        <text class="pager-btn" onclick="nextChapterPage">下一页 ›</text>
+      </div>
+    </div>
+
+    <!-- ==================== EXTRA H SCENES (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'hscenes'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">场景回想 ({{hPage + 1}}/{{hTotalPages}})</text>
+        <text class="sub-back" onclick="backToExtra">返回</text>
+      </div>
+      <div class="sub-list">
+        <div for="{{hRows}}" tid="id" class="row-card" onclick="selectChapter($item.id)">
+          <text class="row-title">{{$item.title}}</text>
+          <text class="row-meta">{{$item.id}} · {{$item.lineCount}} 行</text>
+        </div>
+      </div>
+      <div class="pager">
+        <text class="pager-btn" onclick="prevHPage">‹ 上一页</text>
+        <text class="pager-btn" onclick="nextHPage">下一页 ›</text>
+      </div>
+    </div>
+
+    <!-- ==================== CG GALLERY GRID (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'gallery'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">CG 鉴赏 ({{galleryPage + 1}}/{{galleryTotalPages}})</text>
+        <text class="sub-back" onclick="backToExtra">返回</text>
+      </div>
+      <div class="gallery-grid">
+        <div for="{{galleryRows}}" tid="index" class="cg-card" onclick="openCgViewer($item.index)">
+          <image class="cg-thumb" src="{{$item.thumb}}" />
+          <text class="cg-hero">{{$item.hero}} · {{$item.count}} 张</text>
+        </div>
+      </div>
+      <div class="pager">
+        <text class="pager-btn" onclick="prevGalleryPage">‹ 上一页</text>
+        <text class="pager-btn" onclick="nextGalleryPage">下一页 ›</text>
+      </div>
+    </div>
+
+    <!-- ==================== CG VIEWER (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'cg'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">{{cgTitle}}</text>
+        <text class="sub-back" onclick="backToGallery">返回列表</text>
+      </div>
+      <div class="cg-stage" onclick="nextCgVariant">
+        <image class="cg-full" src="{{cgSrc}}" />
+      </div>
+      <div class="cg-info">
+        <text class="cg-sub">{{cgInfo}}</text>
+      </div>
+      <div class="pager">
+        <text class="pager-btn-sm" onclick="prevCgVariant">‹ 差分</text>
+        <text class="pager-btn-sm" onclick="prevCgGroup">上一组</text>
+        <text class="pager-btn-sm" onclick="nextCgGroup">下一组</text>
+        <text class="pager-btn-sm" onclick="nextCgVariant">差分 ›</text>
+      </div>
+    </div>
+
+    <!-- ==================== MUSIC ROOM (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'music'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">音乐欣赏</text>
+        <text class="sub-back" onclick="closeMusicRoom">返回</text>
+      </div>
+      <div class="sub-body">
+        <div for="{{musicTracks}}" tid="id" class="row-card" onclick="playMusicTrack($item.id)">
+          <div class="row-top">
+            <text class="row-title">{{$item.title}}</text>
+            <text if="{{musicActiveId === $item.id}}" class="badge-playing">播放中</text>
+          </div>
+          <text class="row-meta">{{$item.desc}}</text>
+        </div>
+        <div class="list-btn" onclick="stopMusicRoom">
+          <text class="list-btn-main">停止播放</text>
+          <text class="list-btn-meta">{{musicRoomStatus}}</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== OP PLAYER (screenState = TITLE_SUB) ==================== -->
+    <div if="{{mode === 'op'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">OP 动画</text>
+        <text class="sub-back" onclick="skipOpPlayer">跳过</text>
+      </div>
+      <div class="op-stage" onclick="skipOpPlayer">
+        <image class="op-img" src="{{opFrameSrc}}" />
+      </div>
+      <div class="op-controls">
+        <text class="op-status">{{opStatusLabel}}</text>
+        <div class="pager">
+          <text class="pager-btn" onclick="restartOpPlayer">重新播放</text>
+          <text class="pager-btn" onclick="skipOpPlayer">跳过 OP</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SAVE / LOAD SLOTS (TITLE_SUB or GAME) ==================== -->
+    <div if="{{mode === 'slots'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">{{slotRole === 'save' ? '保存进度' : '读取进度'}} ({{slotPage + 1}}/6)</text>
+        <text class="sub-back" onclick="closeSlots">返回</text>
+      </div>
+      <div class="sub-list">
+        <div for="{{slotRows}}" tid="slot" class="slot-card" onclick="tapSlot($item.slot)">
+          <div class="row-top">
+            <text class="row-title">档案 {{$item.slot + 1}} · {{$item.label}}</text>
+            <text if="{{$item.occupied}}" class="slot-del" onclick="requestDeleteSlot($item.slot)">删</text>
+          </div>
+          <text class="row-meta">{{$item.preview}}</text>
+        </div>
+      </div>
+      <div class="pager">
+        <text class="pager-btn" onclick="prevSlotPage">‹ 上一页</text>
+        <text class="pager-btn" onclick="nextSlotPage">下一页 ›</text>
+      </div>
+    </div>
+
+    <!-- ==================== SLOT CONFIRM OVERLAY ==================== -->
+    <div if="{{mode === 'slotConfirm'}}" class="overlay">
+      <text class="ov-title">{{slotConfirmTitle}}</text>
+      <text class="ov-desc">{{slotConfirmDetail}}</text>
+      <div class="ov-btn ov-btn-primary" onclick="confirmSlotAction"><text class="ov-btn-text">确认</text></div>
+      <div class="ov-btn" onclick="cancelSlotAction"><text class="ov-btn-text">取消</text></div>
+    </div>
+
+    <!-- ==================== SETTINGS (TITLE_SUB or GAME) ==================== -->
+    <div if="{{mode === 'settings'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">系统设定 · CONFIG</text>
+        <text class="sub-back" onclick="closeSettings">返回</text>
+      </div>
+      <div class="sub-body">
+        <div class="list-btn" onclick="toggleBgmSetting">
+          <text class="list-btn-main">标题 / OP 音乐</text>
+          <text class="list-btn-meta">{{settings.bgmEnabled ? '开启' : '关闭'}}</text>
+        </div>
+        <div class="list-btn" onclick="cycleFontSize">
+          <text class="list-btn-main">正文字号</text>
+          <text class="list-btn-meta">{{settings.fontSize}} px</text>
+        </div>
+        <div class="list-btn" onclick="toggleTextSpeed">
+          <text class="list-btn-main">显示速度</text>
+          <text class="list-btn-meta">{{settings.textSpeed === 0 ? '瞬显' : '逐字'}}</text>
+        </div>
+        <div class="list-btn" onclick="cycleAutoSpeed">
+          <text class="list-btn-main">自动播放速度</text>
+          <text class="list-btn-meta">{{autoSpeedLabel}}</text>
+        </div>
+        <div if="{{hasMultiTitleCgs}}" class="list-btn" onclick="cycleTitleBgChoice">
+          <text class="list-btn-main">标题背景 CG</text>
+          <text class="list-btn-meta">{{titleBgChoiceLabel}}</text>
+        </div>
+        <div class="progress-box">
+          <text class="progress-txt">推进记录：{{unlockSummary}}</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== IN-GAME READER (screenState = GAME) ==================== -->
+    <div if="{{mode === 'play'}}" class="screen">
+      <!-- Top 432x243 visual stage (no sprite tweens; slot-keyed images only) -->
+      <div class="stage" onclick="advance">
+        <image class="stage-bg" src="{{bgSrc}}" onerror="onBgError" />
+        <div for="{{sprites}}" tid="cid" class="sp-slot">
+          <image if="{{$item.baseSrc !== ''}}" class="sp-img" style="left: {{$item.x}}px; top: {{$item.y}}px; width: {{$item.w}}px; height: {{$item.h}}px;" src="{{$item.baseSrc}}" />
+          <image if="{{$item.faceSrc !== '' && !$item.fullReplace}}" class="sp-img" style="left: {{$item.faceLeft}}px; top: {{$item.faceTop}}px; width: {{$item.fw}}px; height: {{$item.fh}}px;" src="{{$item.faceSrc}}" />
+          <image if="{{$item.faceSrc !== '' && $item.fullReplace}}" class="sp-img" style="left: {{$item.x}}px; top: {{$item.y}}px; width: {{$item.w}}px; height: {{$item.h}}px;" src="{{$item.faceSrc}}" />
+        </div>
+      </div>
+
+      <!-- Bottom 432x271 original feather-themed dialogue panel (NO top-right text) -->
+      <div class="dlg-panel">
+        <image class="dlg-bg" src="/common/ui/dlg_bg.jpg" />
+        <div class="dlg-head">
+          <div if="{{speaker !== ''}}" class="dlg-speaker-box">
+            <text class="dlg-speaker">{{speaker}}</text>
+          </div>
+        </div>
+        <scroll id="dlg-scroll" class="dlg-scroll" scroll-y="true" ontouchstart="onDlgTouchStart" ontouchmove="onDlgTouchMove" ontouchend="onDlgTouchEnd" ontouchcancel="onDlgTouchCancel" onscroll="onDlgScroll" onclick="onDlgTap">
+          <div class="dlg-text-wrap">
+            <text class="dlg-text" style="font-size: {{settings.fontSize}}px;">{{displayText}}</text>
+          </div>
+        </scroll>
+        <div class="dlg-bar">
+          <text class="tool-btn" onclick="prevLine">上一句</text>
+          <text class="tool-btn" onclick="openGameMenu">菜单</text>
+          <text class="tool-btn-next" onclick="advance">下一句 ›</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CHOICE PANEL (screenState = GAME) ==================== -->
+    <div if="{{mode === 'choice'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">分支选择</text>
+        <text class="sub-back" onclick="openGameMenu">菜单</text>
+      </div>
+      <div class="choice-body">
+        <div for="{{choiceOptions}}" tid="next" class="choice-card" onclick="pickChoice($item.next)">
+          <text class="choice-txt">{{$item.label}}</text>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== IN-GAME MENU (screenState = GAME) ==================== -->
+    <div if="{{mode === 'gameMenu'}}" class="overlay">
+      <text class="ov-title">阅读菜单</text>
+      <div class="ov-divider"></div>
+      <div class="ov-btn ov-btn-primary" onclick="resumePlay"><text class="ov-btn-text">返回游戏</text></div>
+      <div class="ov-grid">
+        <div class="ov-half" onclick="openGameSave"><text class="ov-btn-text">存档</text></div>
+        <div class="ov-half" onclick="openGameLoad"><text class="ov-btn-text">读档</text></div>
+      </div>
+      <div class="ov-grid">
+        <div class="ov-half" style="background-color: {{autoEnabled ? '#5c3a10' : '#122738'}}; border-color: {{autoEnabled ? '#e0b45c' : '#947640'}};" onclick="toggleAutoFromMenu"><text class="ov-btn-text">{{autoEnabled ? '自动播放：开启' : '自动播放：关闭'}}</text></div>
+        <div class="ov-half" onclick="cycleAutoSpeed"><text class="ov-btn-text">自动速度：{{autoSpeedLabel}}</text></div>
+      </div>
+      <div class="ov-grid">
+        <div class="ov-half" onclick="openGameSettings"><text class="ov-btn-text">系统设定</text></div>
+        <div class="ov-half" onclick="skipCurrentChapter"><text class="ov-btn-text">下一章节 ›</text></div>
+      </div>
+      <div class="ov-btn ov-btn-warn" onclick="returnToTitle"><text class="ov-btn-text">返回标题画面</text></div>
+    </div>
+
+    <!-- ==================== ROUTE END SCREEN (screenState = GAME) ==================== -->
+    <div if="{{mode === 'end'}}" class="subscreen">
+      <div class="sub-header">
+        <text class="sub-title">{{endingTitle}}</text>
+        <text class="sub-back" onclick="returnToTitle">返回标题</text>
+      </div>
+      <div class="end-body">
+        <image if="{{endingImage !== ''}}" class="end-img" src="{{endingImage}}" />
+        <text class="end-msg">{{endingMessage}}</text>
+        <div class="ov-btn ov-btn-primary" onclick="returnToTitle"><text class="ov-btn-text">返回标题画面</text></div>
+      </div>
+    </div>
+
+    <!-- ==================== LOADING / ERROR ==================== -->
+    <div if="{{loading}}" class="loading-bar">
+      <text class="loading-txt">读取中…</text>
+    </div>
+    <div if="{{mode === 'error'}}" class="overlay">
+      <text class="ov-title">读取遇到问题</text>
+      <text class="ov-desc">{{errorMessage}}</text>
+      <div class="ov-btn ov-btn-primary" onclick="returnToTitle"><text class="ov-btn-text">返回标题</text></div>
+    </div>
+  </div>
+</template>
+
+<style>
+@font-face {
+  font-family: 'aoitori-text';
+  src: url('/common/aoitori-text.otf');
+}
+
+.root {
+  width: 432px;
+  height: 514px;
+  background-color: #08121b;
+  flex-direction: column;
+  position: relative;
+}
+
+.screen {
+  width: 432px;
+  height: 514px;
+  flex-direction: column;
+  position: relative;
+  background-color: #08121b;
+}
+
+/* ==================== TITLE SCREEN (ORIGINAL ARTWORK + LEFT BUTTONS) ==================== */
+.title-bg-full {
+  width: 432px;
+  height: 514px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.title-btns {
+  position: absolute;
+  width: 216px;
+  flex-direction: column;
+}
+
+.tbtn-wrap {
+  width: 216px;
+  height: 37px;
+  margin-bottom: 6px;
+}
+
+.tbtn-img {
+  width: 216px;
+  height: 37px;
+}
+
+/* ==================== SUBSCREENS (GOTHIC NOCTURNAL TEAL + ANTIQUE GOLD) ==================== */
+.subscreen {
+  width: 432px;
+  height: 514px;
+  flex-direction: column;
+  background-color: #0a1721;
+}
+
+.sub-header {
+  width: 432px;
+  height: 64px;
+  padding-top: 14px;
+  padding-left: 44px;
+  padding-right: 44px;
+  background-color: #0f2433;
+  border-bottom-width: 2px;
+  border-bottom-color: #b89452;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-title {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #f6eedb;
+  max-width: 230px;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.sub-back {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 16px;
+  color: #f9e6be;
+  padding: 5px 12px;
+  background-color: #3d280d;
+  border: 1px solid #c9a156;
+  border-radius: 6px;
+}
+
+.sub-body {
+  flex: 1;
+  padding: 12px 16px;
+  flex-direction: column;
+}
+
+.sub-list {
+  flex: 1;
+  padding: 6px 14px;
+  flex-direction: column;
+}
+
+.list-btn {
+  width: 400px;
+  height: 54px;
+  border-radius: 8px;
+  background-color: #112433;
+  border: 1px solid #967740;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-btn-main {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 19px;
+  color: #f7f0e0;
+}
+
+.list-btn-meta {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 17px;
+  color: #e4be73;
+}
+
+.filter-bar {
+  width: 432px;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #0d1d29;
+  border-bottom-width: 1px;
+  border-bottom-color: #3e5b73;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ftab {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #a4bdcf;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid #0d1d29;
+}
+
+.row-card {
+  width: 404px;
+  height: 58px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  background-color: #102230;
+  border: 1px solid #7d6438;
+  margin-bottom: 5px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slot-card {
+  width: 404px;
+  height: 64px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  background-color: #102230;
+  border: 1px solid #8c6e3b;
+  margin-bottom: 6px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row-top {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-title {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #f6eedb;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.row-meta {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #9cb6cc;
+  margin-top: 4px;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.slot-del {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #ffd6d6;
+  padding: 2px 10px;
+  background-color: #592229;
+  border: 1px solid #a84f59;
+  border-radius: 5px;
+}
+
+.badge-playing {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 14px;
+  color: #fff4d1;
+  background-color: #6b4714;
+  border: 1px solid #dbb160;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.pager {
+  width: 432px;
+  height: 64px;
+  padding-left: 44px;
+  padding-right: 44px;
+  padding-bottom: 14px;
+  background-color: #0e1f2d;
+  border-top-width: 1px;
+  border-top-color: #8f703c;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pager-btn {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 16px;
+  color: #f7ebd2;
+  padding: 6px 13px;
+  background-color: #183247;
+  border: 1px solid #9e7d43;
+  border-radius: 6px;
+}
+
+.pager-btn-sm {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #f7ebd2;
+  padding: 5px 8px;
+  background-color: #183247;
+  border: 1px solid #9e7d43;
+  border-radius: 6px;
+}
+
+.gallery-grid {
+  flex: 1;
+  padding: 12px 14px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cg-card {
+  width: 194px;
+  height: 154px;
+  background-color: #102230;
+  border: 1px solid #8c6e3b;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+
+.cg-thumb {
+  width: 180px;
+  height: 102px;
+  border-radius: 4px;
+  background-color: #07111a;
+  object-fit: contain;
+}
+
+.cg-hero {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 16px;
+  color: #f5ebd6;
+  margin-top: 8px;
+}
+
+.cg-stage {
+  width: 432px;
+  height: 332px;
+  margin-top: 6px;
+  background-color: #000000;
+}
+
+.cg-full {
+  width: 432px;
+  height: 332px;
+  object-fit: contain;
+}
+
+.cg-info {
+  flex: 1;
+  padding: 6px 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cg-sub {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #d6c5a3;
+}
+
+.op-stage {
+  width: 432px;
+  height: 243px;
+  margin-top: 24px;
+  background-color: #000000;
+}
+
+.op-img {
+  width: 432px;
+  height: 243px;
+}
+
+.op-controls {
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.op-status {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #e6d6b8;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.progress-box {
+  width: 400px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background-color: #0f212e;
+  border: 1px solid #594726;
+}
+
+.progress-txt {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #d1bd97;
+}
+
+/* ==================== GAME STAGE & ORIGINAL FEATHER DIALOGUE BOX ==================== */
+.stage {
+  width: 432px;
+  height: 243px;
+  position: relative;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.stage-bg {
+  width: 432px;
+  height: 243px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  object-fit: contain;
+}
+
+.sp-slot {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 432px;
+  height: 243px;
+}
+
+.sp-img {
+  position: absolute;
+}
+
+.dlg-panel {
+  width: 432px;
+  height: 271px;
+  position: relative;
+  background-color: #0a1824;
+  flex-direction: column;
+}
+
+.dlg-bg {
+  width: 432px;
+  height: 271px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.dlg-head {
+  width: 432px;
+  height: 36px;
+  padding-left: 12px;
+  padding-right: 12px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dlg-speaker-box {
+  padding: 2px 12px;
+  background-color: rgba(11, 27, 42, 0.88);
+  border: 1px solid #c29d58;
+  border-radius: 4px;
+}
+
+.dlg-speaker {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #f7e6c0;
+  font-weight: bold;
+}
+
+.dlg-scroll {
+  width: 432px;
+  height: 171px;
+  padding: 8px 20px 6px 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.dlg-text-wrap {
+  width: 392px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.dlg-text {
+  width: 392px;
+  text-align: left;
+  font-family: 'aoitori-text', sans-serif;
+  color: #f5efe2;
+  line-height: 30px;
+}
+
+.dlg-bar {
+  width: 432px;
+  height: 64px;
+  padding-left: 44px;
+  padding-right: 44px;
+  padding-bottom: 14px;
+  background-color: rgba(10, 22, 34, 0.92);
+  border-top-width: 1px;
+  border-top-color: #8a6e3b;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-btn {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #efe2c8;
+  padding: 6px 10px;
+  background-color: #14293b;
+  border: 1px solid #7d6438;
+  border-radius: 5px;
+}
+
+.tool-btn-next {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #fff6e3;
+  padding: 6px 11px;
+  background-color: #5c3a10;
+  border: 1px solid #d4a855;
+  border-radius: 5px;
+}
+
+.choice-body {
+  flex: 1;
+  padding: 24px 20px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.choice-card {
+  width: 392px;
+  min-height: 64px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background-color: #142b3d;
+  border: 1px solid #c9a156;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice-txt {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 20px;
+  color: #f7eedc;
+  text-align: center;
+}
+
+.overlay {
+  width: 432px;
+  height: 514px;
+  padding: 24px 20px;
+  background-color: rgba(8, 18, 28, 0.96);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ov-title {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 24px;
+  color: #f7ecd5;
+  margin-bottom: 10px;
+}
+
+.ov-divider {
+  width: 300px;
+  height: 2px;
+  background-color: #b08c4a;
+  margin-bottom: 18px;
+}
+
+.ov-desc {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 18px;
+  color: #d6c8ad;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ov-btn {
+  width: 360px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: #122738;
+  border: 1px solid #947640;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ov-btn-primary {
+  background-color: #5c3a10;
+  border: 1px solid #e0b45c;
+}
+
+.ov-btn-warn {
+  background-color: #4f2027;
+  border: 1px solid #ad4d5c;
+}
+
+.ov-grid {
+  width: 360px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ov-half {
+  width: 174px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: #122738;
+  border: 1px solid #947640;
+  justify-content: center;
+  align-items: center;
+}
+
+.ov-btn-text {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 19px;
+  color: #f7eedc;
+}
+
+.end-body {
+  flex: 1;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-img {
+  width: 320px;
+  height: 180px;
+  border-radius: 8px;
+  border: 1px solid #b89452;
+  margin-bottom: 18px;
+}
+
+.end-msg {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 20px;
+  color: #f5ebd6;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.loading-bar {
+  position: absolute;
+  top: 16px;
+  right: 44px;
+  padding: 4px 10px;
+  background-color: rgba(11, 25, 38, 0.92);
+  border: 1px solid #b89452;
+  border-radius: 6px;
+}
+
+.loading-txt {
+  font-family: 'aoitori-text', sans-serif;
+  font-size: 15px;
+  color: #f2dfb8;
+}
+</style>
+
+<script>
+import file from '@system.file';
+import storage from '@system.storage';
+import prompt from '@system.prompt';
+import audio from '@system.audio';
+import graphData from '../../common/graph.js';
+import galleryData from '../../common/gallery.js';
+import spriteMeta from '../../common/sprite-meta.js';
+import openingMeta from '../../common/opening-meta.js';
+import { createStoryEngine } from '../../common/engine.js';
+import { parseChunkText } from '../../common/chunk-codec.js';
+import { createTitleMusicController, SCREEN_STATES } from '../../common/title-music.js';
+import { createSpriteStateMachine } from '../../common/sprite-machine.js';
+import { getOpeningFrameUri, getOpeningFrameIndexAtMs } from '../../common/opening.js';
+import { computeAutoDelayMs, getTypewriterConfig } from '../../common/auto-reader.js';
+
+const SETTINGS_KEY = 'aoitori_rw5_settings_v1';
+const PROGRESS_KEY = 'aoitori_rw5_progress_v1';
+const SAVES_KEY = 'aoitori_rw5_saves_v1';
+const MAX_SLOTS = 30;
+const SLOT_PAGE_SIZE = 5;
+const CHAPTER_PAGE_SIZE = 5;
+const GALLERY_PAGE_SIZE = 4;
+
+const MUSIC_LIST = [
+  { id: 'title', title: '标题曲 · 月下', src: '/common/title-bgm.opus', desc: 'bgm36 · 标题画面默认配乐' },
+  { id: 'true', title: '真相篇标题曲 · 青鸟', src: '/common/title-true-bgm.opus', desc: 'bgm33 · 真相篇解锁后标题配乐' },
+  { id: 'op', title: 'OP 主题曲', src: '/common/opening-bgm.opus', desc: 'op.cmv 主题曲' },
+];
+
+export default {
+  private: {
+    mode: 'title',
+    loading: false,
+    errorMessage: '',
+    titleBgSrc: '/common/images/title01.jpg',
+    titleBgId: 'title01',
+    titleShowAkari: false,
+    hasMultiTitleCgs: false,
+    titleBgChoiceLabel: '随进度（最新）',
+    unlockSummary: '尚未解锁结局',
+
+    settings: {
+      bgmEnabled: true,
+      fontSize: 20,
+      textSpeed: 28,
+      autoSpeed: 'normal',
+      titleBgChoice: 'auto',
+    },
+    autoSpeedLabel: '标准',
+
+    bgSrc: '/common/images/black.jpg',
+    sprites: [],
+    speaker: '',
+    fullText: '',
+    displayText: '',
+    chapterLabel: '',
+    autoEnabled: false,
+    choiceOptions: [],
+
+    routeFilter: 'all',
+    routeTabs: [],
+    chapterPage: 0,
+    chapterTotalPages: 1,
+    chapterRows: [],
+    visibleChapterCount: 0,
+
+    hPage: 0,
+    hTotalPages: 1,
+    hRows: [],
+
+    galleryPage: 0,
+    galleryTotalPages: 1,
+    galleryGroupCount: 0,
+    galleryRows: [],
+    cgGroupIndex: 0,
+    cgVariantIndex: 0,
+    cgSrc: '',
+    cgTitle: '',
+    cgInfo: '',
+
+    slotRole: 'load',
+    slotPage: 0,
+    slotRows: [],
+    slotConfirmTitle: '',
+    slotConfirmDetail: '',
+
+    musicTracks: MUSIC_LIST,
+    musicActiveId: '',
+    musicRoomStatus: '已停止',
+
+    opPlaying: false,
+    opFrameSrc: '/common/opening/f0000.jpg',
+    opStatusLabel: '点击画面直接跳过 OP',
+
+    endingTitle: '阅读完毕',
+    endingImage: '',
+    endingMessage: '',
+  },
+
+  onInit() {
+    this._alive = true;
+    this._hidden = false;
+    this._engine = createStoryEngine(graphData);
+    this._spriteMachine = createSpriteStateMachine(spriteMeta);
+    this._progress = this._engine.normalizeProgress(null);
+    this._saves = new Array(MAX_SLOTS).fill(null);
+
+    this._curNode = null;
+    this._curChunkIdx = 0;
+    this._curLineIdx = 0;
+    this._chunkLines = [];
+    this._cachedChunkId = '';
+
+    this._typeTimer = null;
+    this._autoTimer = null;
+    this._dlgScrollEndTimer = null;
+    this._dlgTouchResumeTimer = null;
+    this._opTimer = null;
+    this._opStartMs = 0;
+    this._opElapsedMs = 0;
+    this._loadSeq = 0;
+    this._pendingRenderOnShow = false;
+    this._dlgDragged = false;
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this._ignoreScrollUntil = 0;
+    this._dlgTouchStart = null;
+    this._settingsReturnMode = 'title';
+    this._slotsReturnMode = 'title';
+    this._pendingSlotAction = null;
+
+    const adapter = {
+      play(src, loop) {
+        try {
+          audio.autoplay = false;
+          audio.loop = !!loop;
+          audio.src = src;
+          audio.play();
+        } catch (e) {}
+      },
+      stop() {
+        try { audio.pause(); } catch (e) {}
+        try { audio.stop(); } catch (e) {}
+      },
+    };
+    this._titleMusic = createTitleMusicController(adapter);
+
+    this.initDataFromStorage();
+  },
+
+  onShow() {
+    this._hidden = false;
+    if (this._pendingRenderOnShow && this.mode === 'play') {
+      this._pendingRenderOnShow = false;
+      this._titleMusic.transition(SCREEN_STATES.GAME, { immediate: true });
+      this.renderLoadedLine();
+      return;
+    }
+    if (this.mode === 'title' || this.mode === 'extra' || this.mode === 'chapters' || this.mode === 'hscenes' || this.mode === 'gallery' || this.mode === 'cg' || (this.mode === 'settings' && !this.isGameMode(this.mode)) || (this.mode === 'slots' && !this.isGameMode(this.mode))) {
+      this._titleMusic.transition(
+        this.mode === 'title' ? SCREEN_STATES.TITLE : SCREEN_STATES.TITLE_SUB,
+        this.getTitleMusicOpts()
+      );
+    } else if (this.isGameMode(this.mode)) {
+      this._titleMusic.transition(SCREEN_STATES.GAME, { immediate: true });
+      this.armAutoTimer();
+    }
+  },
+
+  onHide() {
+    this._hidden = true;
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearTimers();
+    this.stopOpTimer();
+    this.stopAudioCleanly();
+    this._titleMusic.adoptExternalTrack('');
+    if (this.mode === 'play' && !this.loading && !this._pendingRenderOnShow) {
+      this.displayText = this.fullText;
+    }
+  },
+
+  onDestroy() {
+    this._alive = false;
+    this.autoEnabled = false;
+    this.cancelPendingStoryLoad();
+    this.clearTimers();
+    this.stopOpTimer();
+    this.stopAudioCleanly();
+  },
+
+  exitApp() {
+    this._alive = false;
+    this.autoEnabled = false;
+    this.cancelPendingStoryLoad();
+    this.clearTimers();
+    this.stopOpTimer();
+    this.stopAudioCleanly();
+    try { this.$app.exit(); } catch (e) {}
+  },
+
+  stopAudioCleanly() {
+    try { audio.pause(); } catch (e) {}
+    try { audio.stop(); } catch (e) {}
+  },
+
+  isGameMode(m) {
+    return m === 'play' || m === 'choice' || m === 'gameMenu' || m === 'end' ||
+      (m === 'slots' && this._slotsReturnMode === 'gameMenu') ||
+      (m === 'settings' && this._settingsReturnMode === 'gameMenu') ||
+      (m === 'slotConfirm' && this._slotsReturnMode === 'gameMenu');
+  },
+
+  toast(msg) {
+    try {
+      prompt.showToast({ message: String(msg), duration: 0 });
+    } catch (e) {}
+  },
+
+  pauseAutoTimer() {
+    if (this._autoTimer !== null) {
+      clearTimeout(this._autoTimer);
+      this._autoTimer = null;
+    }
+  },
+
+  clearScrollTimers() {
+    if (this._dlgScrollEndTimer !== null) {
+      clearTimeout(this._dlgScrollEndTimer);
+      this._dlgScrollEndTimer = null;
+    }
+    if (this._dlgTouchResumeTimer !== null) {
+      clearTimeout(this._dlgTouchResumeTimer);
+      this._dlgTouchResumeTimer = null;
+    }
+  },
+
+  cancelPendingStoryLoad() {
+    this._loadSeq += 1;
+    this.loading = false;
+    this._pendingRenderOnShow = false;
+  },
+
+  clearTimers() {
+    if (this._typeTimer !== null) {
+      clearTimeout(this._typeTimer);
+      this._typeTimer = null;
+    }
+    this.pauseAutoTimer();
+    this.clearScrollTimers();
+  },
+
+  stopOpTimer() {
+    if (this._opTimer !== null) {
+      clearTimeout(this._opTimer);
+      this._opTimer = null;
+    }
+  },
+
+  initDataFromStorage() {
+    let pending = 3;
+    const doneOne = () => {
+      pending -= 1;
+      if (pending <= 0) {
+        this.refreshAllUiState();
+        this._titleMusic.transition(SCREEN_STATES.TITLE, this.getTitleMusicOpts());
+      }
+    };
+
+    storage.get({
+      key: SETTINGS_KEY,
+      default: '',
+      success: (val) => {
+        try {
+          if (val) {
+            const s = JSON.parse(val);
+            const validChoice = s.titleBgChoice === 'title01' || s.titleBgChoice === 'title02' || s.titleBgChoice === 'title03' ? s.titleBgChoice : 'auto';
+            this.settings = Object.assign({}, this.settings, {
+              bgmEnabled: s.bgmEnabled !== false,
+              fontSize: s.fontSize === 18 || s.fontSize === 24 ? s.fontSize : 20,
+              textSpeed: s.textSpeed === 0 ? 0 : 28,
+              autoSpeed: s.autoSpeed === 'slow' || s.autoSpeed === 'fast' ? s.autoSpeed : 'normal',
+              titleBgChoice: validChoice,
+            });
+          }
+        } catch (e) {}
+        doneOne();
+      },
+      fail: () => doneOne(),
+    });
+
+    storage.get({
+      key: PROGRESS_KEY,
+      default: '',
+      success: (val) => {
+        try {
+          if (val) {
+            this._progress = this._engine.normalizeProgress(JSON.parse(val));
+          }
+        } catch (e) {}
+        doneOne();
+      },
+      fail: () => doneOne(),
+    });
+
+    storage.get({
+      key: SAVES_KEY,
+      default: '',
+      success: (val) => {
+        try {
+          if (val) {
+            const arr = JSON.parse(val);
+            if (Array.isArray(arr)) {
+              for (let i = 0; i < MAX_SLOTS; i++) {
+                this._saves[i] = arr[i] || null;
+              }
+            }
+          }
+        } catch (e) {}
+        doneOne();
+      },
+      fail: () => doneOne(),
+    });
+  },
+
+  persistSettings() {
+    try {
+      storage.set({ key: SETTINGS_KEY, value: JSON.stringify(this.settings), success: () => {}, fail: () => {} });
+    } catch (e) {}
+  },
+
+  persistProgress() {
+    try {
+      storage.set({ key: PROGRESS_KEY, value: JSON.stringify(this._progress), success: () => {}, fail: () => {} });
+    } catch (e) {}
+  },
+
+  persistSaves() {
+    try {
+      storage.set({ key: SAVES_KEY, value: JSON.stringify(this._saves), success: () => {}, fail: () => {} });
+    } catch (e) {}
+  },
+
+  getTitleMusicOpts() {
+    const pres = this._engine.getTitlePresentation(this._progress, this.settings.titleBgChoice);
+    return {
+      trueUnlocked: !!this._progress.trueUnlocked,
+      bgmEnabled: !!this.settings.bgmEnabled,
+      titleBgm: pres.bgm,
+    };
+  },
+
+  refreshAllUiState() {
+    const pres = this._engine.getTitlePresentation(this._progress, this.settings.titleBgChoice);
+    this.titleBgSrc = pres.bg;
+    this.titleBgId = pres.activeTitleId || 'title01';
+    this.titleShowAkari = !!pres.showAkariRoute;
+    this.hasMultiTitleCgs = pres.unlockedTitles && pres.unlockedTitles.length > 1;
+    const choiceMap = {
+      auto: '随进度（最新）',
+      title01: '初夜洋馆 (月下)',
+      title02: '雪庭昼景 (月下)',
+      title03: '青鸟明里 (青鸟)',
+    };
+    const effChoice = this.settings.titleBgChoice && (this.settings.titleBgChoice === 'auto' || pres.unlockedTitles.indexOf(this.settings.titleBgChoice) >= 0)
+      ? this.settings.titleBgChoice
+      : 'auto';
+    this.titleBgChoiceLabel = choiceMap[effChoice] || '随进度（最新）';
+    this.autoSpeedLabel = this.settings.autoSpeed === 'slow' ? '慢速' : (this.settings.autoSpeed === 'fast' ? '快速' : '标准');
+
+    const flags = [];
+    if (this._progress.title02) flags.push('序章标题');
+    if (this._progress.clearRisa) flags.push('理沙');
+    if (this._progress.clearSayo) flags.push('小夜');
+    if (this._progress.clearMari) flags.push('玛丽');
+    if (this._progress.trueUnlocked) flags.push('明里篇开启');
+    if (this._progress.clearTrue) flags.push('真相通关');
+    this.unlockSummary = flags.length ? flags.join(' · ') : '尚未解锁结局';
+
+    this.visibleChapterCount = this._engine.listVisibleChapters().length;
+    this.galleryGroupCount = this._engine.filterGallery(galleryData).length;
+  },
+
+  // ==================== TITLE & SUB NAVIGATION ====================
+  backToTitle() {
+    this.cancelPendingStoryLoad();
+    this.clearTimers();
+    this.stopOpTimer();
+    this.autoEnabled = false;
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.opPlaying = false;
+    this.mode = 'title';
+    this.refreshAllUiState();
+    this._titleMusic.transition(SCREEN_STATES.TITLE, this.getTitleMusicOpts());
+  },
+
+  openExtraMenu() {
+    this.mode = 'extra';
+    this.refreshAllUiState();
+    this._titleMusic.transition(SCREEN_STATES.TITLE_SUB, this.getTitleMusicOpts());
+  },
+
+  backToExtra() {
+    this.stopOpTimer();
+    this.opPlaying = false;
+    this.mode = 'extra';
+    this.refreshAllUiState();
+    this._titleMusic.transition(SCREEN_STATES.TITLE_SUB, this.getTitleMusicOpts());
+  },
+
+  openTitleSettings() {
+    this._settingsReturnMode = 'title';
+    this.mode = 'settings';
+    this.refreshAllUiState();
+    this._titleMusic.transition(SCREEN_STATES.TITLE_SUB, this.getTitleMusicOpts());
+  },
+
+  openTitleSlots() {
+    this._slotsReturnMode = 'title';
+    this.slotRole = 'load';
+    this.slotPage = 0;
+    this.mode = 'slots';
+    this.refreshSlotRows();
+    this._titleMusic.transition(SCREEN_STATES.TITLE_SUB, this.getTitleMusicOpts());
+  },
+
+  // ==================== SETTINGS ACTIONS ====================
+  closeSettings() {
+    if (this._settingsReturnMode === 'gameMenu') {
+      this.mode = 'gameMenu';
+      return;
+    }
+    this.backToTitle();
+  },
+
+  toggleBgmSetting() {
+    this.settings.bgmEnabled = !this.settings.bgmEnabled;
+    this.persistSettings();
+    if (!this.isGameMode(this.mode)) {
+      this._titleMusic.transition(
+        this.mode === 'title' ? SCREEN_STATES.TITLE : SCREEN_STATES.TITLE_SUB,
+        this.getTitleMusicOpts()
+      );
+    }
+  },
+
+  cycleTitleBgChoice() {
+    const pres = this._engine.getTitlePresentation(this._progress, this.settings.titleBgChoice);
+    const options = ['auto'].concat(pres.unlockedTitles || ['title01']);
+    const cur = options.indexOf(this.settings.titleBgChoice);
+    this.settings.titleBgChoice = options[(cur + 1) % options.length];
+    this.persistSettings();
+    this.refreshAllUiState();
+    if (!this.isGameMode(this.mode)) {
+      this._titleMusic.transition(SCREEN_STATES.TITLE_SUB, this.getTitleMusicOpts());
+    }
+  },
+
+  cycleFontSize() {
+    const sizes = [18, 20, 24];
+    const idx = (sizes.indexOf(this.settings.fontSize) + 1) % sizes.length;
+    this.settings.fontSize = sizes[idx];
+    this.persistSettings();
+  },
+
+  toggleTextSpeed() {
+    this.settings.textSpeed = this.settings.textSpeed === 0 ? 28 : 0;
+    this.persistSettings();
+  },
+
+  cycleAutoSpeed() {
+    const order = ['slow', 'normal', 'fast'];
+    const idx = (order.indexOf(this.settings.autoSpeed) + 1) % order.length;
+    this.settings.autoSpeed = order[idx];
+    this.persistSettings();
+    this.refreshAllUiState();
+  },
+
+  // ==================== CHAPTERS & H-SCENES ====================
+  openChapters(routeId) {
+    this.routeFilter = routeId || 'all';
+    this.chapterPage = 0;
+    this.mode = 'chapters';
+    this.refreshChapters();
+  },
+
+  backFromChapters() {
+    this.backToExtra();
+  },
+
+  setRouteFilter(id) {
+    this.routeFilter = id;
+    this.chapterPage = 0;
+    this.refreshChapters();
+  },
+
+  refreshChapters() {
+    const tabs = [
+      { id: 'all', label: '全部' },
+      { id: 'common', label: '共通' },
+      { id: 'risa', label: '理沙' },
+      { id: 'sayo', label: '小夜' },
+      { id: 'mari', label: '玛丽' },
+      { id: 'true', label: '真相' },
+    ];
+    this.routeTabs = tabs.map((t) => ({ id: t.id, label: t.label, active: t.id === this.routeFilter }));
+
+    const filter = this.routeFilter === 'all' ? '' : this.routeFilter;
+    this._chapterList = this._engine.listVisibleChapters(filter);
+    this.chapterTotalPages = Math.max(1, Math.ceil(this._chapterList.length / CHAPTER_PAGE_SIZE));
+    if (this.chapterPage >= this.chapterTotalPages) this.chapterPage = this.chapterTotalPages - 1;
+    const start = this.chapterPage * CHAPTER_PAGE_SIZE;
+    this.chapterRows = this._chapterList.slice(start, start + CHAPTER_PAGE_SIZE);
+  },
+
+  prevChapterPage() {
+    if (this.chapterPage > 0) {
+      this.chapterPage -= 1;
+      this.refreshChapters();
+    }
+  },
+
+  nextChapterPage() {
+    if (this.chapterPage < this.chapterTotalPages - 1) {
+      this.chapterPage += 1;
+      this.refreshChapters();
+    }
+  },
+
+  openHScenes() {
+    this.hPage = 0;
+    this.mode = 'hscenes';
+    this.refreshHScenes();
+  },
+
+  refreshHScenes() {
+    this._hList = this._engine.listHScenes();
+    this.hTotalPages = Math.max(1, Math.ceil(this._hList.length / CHAPTER_PAGE_SIZE));
+    if (this.hPage >= this.hTotalPages) this.hPage = this.hTotalPages - 1;
+    const start = this.hPage * CHAPTER_PAGE_SIZE;
+    this.hRows = this._hList.slice(start, start + CHAPTER_PAGE_SIZE);
+  },
+
+  prevHPage() {
+    if (this.hPage > 0) {
+      this.hPage -= 1;
+      this.refreshHScenes();
+    }
+  },
+
+  nextHPage() {
+    if (this.hPage < this.hTotalPages - 1) {
+      this.hPage += 1;
+      this.refreshHScenes();
+    }
+  },
+
+  selectChapter(nodeId) {
+    this.beginStoryAt(nodeId, 0, 0);
+  },
+
+  // ==================== GALLERY ====================
+  openGallery() {
+    this.galleryPage = 0;
+    this.mode = 'gallery';
+    this.refreshGallery();
+  },
+
+  refreshGallery() {
+    this._visibleGallery = this._engine.filterGallery(galleryData);
+    this.galleryTotalPages = Math.max(1, Math.ceil(this._visibleGallery.length / GALLERY_PAGE_SIZE));
+    if (this.galleryPage >= this.galleryTotalPages) this.galleryPage = this.galleryTotalPages - 1;
+    const start = this.galleryPage * GALLERY_PAGE_SIZE;
+    this.galleryRows = this._visibleGallery.slice(start, start + GALLERY_PAGE_SIZE).map((g, i) => ({
+      index: start + i,
+      hero: g.hero,
+      count: g.items.length,
+      thumb: '/common/images/' + g.base + '.jpg',
+    }));
+  },
+
+  prevGalleryPage() {
+    if (this.galleryPage > 0) {
+      this.galleryPage -= 1;
+      this.refreshGallery();
+    }
+  },
+
+  nextGalleryPage() {
+    if (this.galleryPage < this.galleryTotalPages - 1) {
+      this.galleryPage += 1;
+      this.refreshGallery();
+    }
+  },
+
+  openCgViewer(visIdx) {
+    if (!this._visibleGallery || !this._visibleGallery[visIdx]) return;
+    this.cgGroupIndex = visIdx;
+    this.cgVariantIndex = 0;
+    this.mode = 'cg';
+    this.refreshCgView();
+  },
+
+  refreshCgView() {
+    const grp = this._visibleGallery[this.cgGroupIndex];
+    if (!grp) return;
+    if (this.cgVariantIndex >= grp.items.length) this.cgVariantIndex = 0;
+    if (this.cgVariantIndex < 0) this.cgVariantIndex = grp.items.length - 1;
+    const name = grp.items[this.cgVariantIndex];
+    this.cgSrc = '/common/images/' + name + '.jpg';
+    this.cgTitle = grp.hero + ' · 组 ' + (this.cgGroupIndex + 1) + '/' + this._visibleGallery.length;
+    this.cgInfo = '差分 ' + (this.cgVariantIndex + 1) + '/' + grp.items.length + '（点击画面切换差分）';
+  },
+
+  nextCgVariant() {
+    this.cgVariantIndex += 1;
+    this.refreshCgView();
+  },
+
+  prevCgVariant() {
+    this.cgVariantIndex -= 1;
+    this.refreshCgView();
+  },
+
+  nextCgGroup() {
+    if (!this._visibleGallery || !this._visibleGallery.length) return;
+    this.cgGroupIndex = (this.cgGroupIndex + 1) % this._visibleGallery.length;
+    this.cgVariantIndex = 0;
+    this.refreshCgView();
+  },
+
+  prevCgGroup() {
+    if (!this._visibleGallery || !this._visibleGallery.length) return;
+    this.cgGroupIndex = (this.cgGroupIndex - 1 + this._visibleGallery.length) % this._visibleGallery.length;
+    this.cgVariantIndex = 0;
+    this.refreshCgView();
+  },
+
+  backToGallery() {
+    this.mode = 'gallery';
+  },
+
+  // ==================== MUSIC ROOM & OP PLAYER ====================
+  openMusicRoom() {
+    this.mode = 'music';
+    const snap = this._titleMusic.getSnapshot();
+    const curTrack = snap && snap.isPlaying ? snap.currentTrack : '';
+    const match = MUSIC_LIST.find((x) => x.src === curTrack);
+    this.musicActiveId = match ? match.id : '';
+    this.musicRoomStatus = match ? ('正在播放: ' + match.title) : '待机中';
+  },
+
+  playMusicTrack(trackId) {
+    const t = MUSIC_LIST.find((x) => x.id === trackId);
+    if (!t) return;
+    try {
+      this.stopAudioCleanly();
+      audio.autoplay = false;
+      audio.loop = true;
+      audio.src = t.src;
+      audio.play();
+      this._titleMusic.adoptExternalTrack(t.src);
+      this.musicActiveId = t.id;
+      this.musicRoomStatus = '正在播放: ' + t.title;
+    } catch (e) {
+      this.toast('音频播放失败');
+    }
+  },
+
+  stopMusicRoom() {
+    this.stopAudioCleanly();
+    this._titleMusic.adoptExternalTrack('');
+    this.musicActiveId = '';
+    this.musicRoomStatus = '已停止';
+  },
+
+  closeMusicRoom() {
+    this.backToExtra();
+  },
+
+  openOpPlayer() {
+    this.mode = 'op';
+    this.restartOpPlayer();
+  },
+
+  restartOpPlayer() {
+    this.stopOpTimer();
+    this._opElapsedMs = 0;
+    this._opStartMs = Date.now();
+    this.opPlaying = true;
+    this.opFrameSrc = getOpeningFrameUri(0);
+    this.opStatusLabel = '点击画面直接跳过 OP';
+    this.stopAudioCleanly();
+    if (this.settings.bgmEnabled) {
+      try {
+        audio.autoplay = false;
+        audio.loop = false;
+        audio.src = '/common/opening-bgm.opus';
+        audio.play();
+        this._titleMusic.adoptExternalTrack('/common/opening-bgm.opus');
+      } catch (e) {}
+    } else {
+      this._titleMusic.adoptExternalTrack('');
+    }
+    this.scheduleOpTick();
+  },
+
+  skipOpPlayer() {
+    this.closeOpPlayer();
+  },
+
+  scheduleOpTick() {
+    this.stopOpTimer();
+    if (!this.opPlaying || this.mode !== 'op') return;
+    const elapsed = Date.now() - this._opStartMs;
+    const idx = getOpeningFrameIndexAtMs(elapsed, openingMeta);
+    this.opFrameSrc = getOpeningFrameUri(idx);
+
+    if (elapsed >= openingMeta.durationMs) {
+      this.opPlaying = false;
+      this.opStatusLabel = 'OP 播放结束（点击跳过）';
+      this.stopAudioCleanly();
+      this._titleMusic.adoptExternalTrack('');
+      return;
+    }
+    this._opTimer = setTimeout(() => {
+      this._opTimer = null;
+      this.scheduleOpTick();
+    }, 280);
+  },
+
+  closeOpPlayer() {
+    this.stopOpTimer();
+    this.opPlaying = false;
+    this.stopAudioCleanly();
+    this._titleMusic.adoptExternalTrack('');
+    this.backToExtra();
+  },
+
+  // ==================== SAVE / LOAD SLOTS ====================
+  refreshSlotRows() {
+    const start = this.slotPage * SLOT_PAGE_SIZE;
+    const rows = [];
+    for (let i = 0; i < SLOT_PAGE_SIZE; i++) {
+      const idx = start + i;
+      const sv = this._saves[idx];
+      rows.push({
+        slot: idx,
+        occupied: !!sv,
+        label: sv ? (sv.title + ' · ' + (sv.lineNum || 1)) : '空存档位',
+        preview: sv ? (sv.preview || '暂无摘要') : (this.slotRole === 'save' ? '点击保存当前进度' : '空白'),
+      });
+    }
+    this.slotRows = rows;
+  },
+
+  prevSlotPage() {
+    if (this.slotPage > 0) {
+      this.slotPage -= 1;
+      this.refreshSlotRows();
+    }
+  },
+
+  nextSlotPage() {
+    if (this.slotPage < 5) {
+      this.slotPage += 1;
+      this.refreshSlotRows();
+    }
+  },
+
+  tapSlot(slotIdx) {
+    const existing = this._saves[slotIdx];
+    if (this.slotRole === 'save') {
+      if (existing) {
+        this._pendingSlotAction = { type: 'save', slot: slotIdx };
+        this.slotConfirmTitle = '覆盖档案 ' + (slotIdx + 1) + '?';
+        this.slotConfirmDetail = existing.title + ' · ' + existing.preview;
+        this.mode = 'slotConfirm';
+        return;
+      }
+      this.writeSaveToSlot(slotIdx);
+      return;
+    }
+    if (!existing) {
+      this.toast('该存档位为空');
+      return;
+    }
+    this.beginStoryAt(existing.nodeId, existing.chunkIdx || 0, existing.lineIdx || 0);
+  },
+
+  requestDeleteSlot(slotIdx, evt) {
+    if (evt && typeof evt.stopPropagation === 'function') {
+      evt.stopPropagation();
+    }
+    const existing = this._saves[slotIdx];
+    if (!existing) return;
+    this._pendingSlotAction = { type: 'delete', slot: slotIdx };
+    this.slotConfirmTitle = '删除档案 ' + (slotIdx + 1) + '?';
+    this.slotConfirmDetail = existing.title + ' · ' + existing.preview;
+    this.mode = 'slotConfirm';
+  },
+
+  confirmSlotAction() {
+    const act = this._pendingSlotAction;
+    this._pendingSlotAction = null;
+    if (!act) {
+      this.mode = 'slots';
+      return;
+    }
+    if (act.type === 'delete') {
+      this._saves[act.slot] = null;
+      this.persistSaves();
+      this.toast('已删除档案 ' + (act.slot + 1));
+    } else if (act.type === 'save') {
+      this.writeSaveToSlot(act.slot);
+    }
+    this.mode = 'slots';
+    this.refreshSlotRows();
+  },
+
+  cancelSlotAction() {
+    this._pendingSlotAction = null;
+    this.mode = 'slots';
+  },
+
+  writeSaveToSlot(slotIdx) {
+    if (!this._curNode) return;
+    const absLine = this._curLineIdx + 1;
+    const snippet = (this.speaker ? this.speaker + '：' : '') + (this.fullText || '').slice(0, 26);
+    this._saves[slotIdx] = {
+      nodeId: this._curNode.id,
+      title: this._curNode.title || this._curNode.id,
+      chunkIdx: this._curChunkIdx,
+      lineIdx: this._curLineIdx,
+      lineNum: absLine,
+      preview: snippet,
+      savedAt: Date.now(),
+    };
+    this.persistSaves();
+    this.refreshSlotRows();
+    this.toast('已保存到档案 ' + (slotIdx + 1));
+  },
+
+  closeSlots() {
+    if (this._slotsReturnMode === 'gameMenu') {
+      this.mode = 'gameMenu';
+      return;
+    }
+    this.backToTitle();
+  },
+
+  // ==================== STORY ENGINE & READER ====================
+  startNewGame() {
+    this.beginStoryAt(graphData.startNode || 'sn101', 0, 0);
+  },
+
+  startTrueRoute() {
+    if (!this._progress.trueUnlocked) {
+      this.toast('请先通关理沙、小夜、玛丽三条路线');
+      return;
+    }
+    this.beginStoryAt(graphData.trueRouteStartNode || 'sn501', 0, 0);
+  },
+
+  beginStoryAt(nodeId, chunkIdx, lineIdx) {
+    const preserveAuto = this.isGameMode(this.mode) && this.mode !== 'end';
+    this.clearTimers();
+    this.stopOpTimer();
+    this.cancelPendingStoryLoad();
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.autoEnabled = preserveAuto ? !!this.autoEnabled : false;
+    this._titleMusic.transition(SCREEN_STATES.GAME, { immediate: true });
+
+    const node = this._engine.resolveStartNode(nodeId);
+    if (!node) {
+      this.autoEnabled = false;
+      this.errorMessage = '找不到章节: ' + nodeId;
+      this.mode = 'error';
+      return;
+    }
+    this._curNode = node;
+    this._curChunkIdx = Math.min(chunkIdx || 0, Math.max(0, node.chunks.length - 1));
+    this._curLineIdx = Math.max(0, lineIdx || 0);
+    this.mode = 'play';
+    this.applyNodeProgressUnlocks(node);
+    this.loadAndRenderCurrentLine();
+  },
+
+  applyNodeProgressUnlocks(node) {
+    if (!node || !Array.isArray(node.unlocks) || !node.unlocks.length) return;
+    const before = JSON.stringify(this._progress);
+    const next = this._engine.applyNodeUnlocks(this._progress, node);
+    if (JSON.stringify(next) !== before) {
+      this._progress = next;
+      this.persistProgress();
+      this.refreshAllUiState();
+      if (node.unlocks.indexOf('title02') >= 0) {
+        this.toast('标题画面变化已解锁');
+      } else if (next.trueUnlocked) {
+        this.toast('明里篇（真相路线）已解锁！');
+      }
+    }
+  },
+
+  loadAndRenderCurrentLine() {
+    if (!this._curNode) return;
+    const chunkId = this._curNode.chunks[this._curChunkIdx];
+    if (!chunkId) {
+      this.finishCurrentNode();
+      return;
+    }
+    if (this._cachedChunkId === chunkId && this._chunkLines.length > 0) {
+      this.renderLoadedLine();
+      return;
+    }
+    this.loading = true;
+    const seq = ++this._loadSeq;
+    file.readText({
+      uri: '/common/story/' + chunkId + '.txt',
+      success: (res) => {
+        if (seq !== this._loadSeq || !this._alive) return;
+        this.loading = false;
+        this._chunkLines = parseChunkText(res.text);
+        this._cachedChunkId = chunkId;
+        if (this._hidden || this.mode !== 'play') {
+          this._pendingRenderOnShow = true;
+          return;
+        }
+        this.renderLoadedLine();
+      },
+      fail: (err, code) => {
+        if (seq !== this._loadSeq || !this._alive) return;
+        this.loading = false;
+        this._pendingRenderOnShow = false;
+        this.clearTimers();
+        this.autoEnabled = false;
+        this.errorMessage = '章节片段读取失败: ' + chunkId + ' (' + code + ')';
+        this.mode = 'error';
+      },
+    });
+  },
+
+  renderLoadedLine() {
+    if (!this._chunkLines || this._curLineIdx >= this._chunkLines.length) {
+      if (this._curChunkIdx + 1 < this._curNode.chunks.length) {
+        this._curChunkIdx += 1;
+        this._curLineIdx = 0;
+        this.loadAndRenderCurrentLine();
+      } else {
+        this.finishCurrentNode();
+      }
+      return;
+    }
+
+    const line = this._chunkLines[this._curLineIdx];
+    this.mode = 'play';
+    this.bgSrc = line.bg && line.bg !== 'black' ? ('/common/images/' + line.bg + '.jpg') : '/common/images/black.jpg';
+
+    const instances = this._spriteMachine.applySnapshot(line.sprites);
+    this.sprites = instances.map((sp) => Object.assign({}, sp, {
+      faceLeft: (sp.x || 0) + (sp.fx || 0),
+      faceTop: (sp.y || 0) + (sp.fy || 0),
+    }));
+
+    this.speaker = line.speaker || '';
+    this.fullText = line.text || '';
+    this.chapterLabel = (this._curNode.title || this._curNode.id);
+
+    if (this._curLineIdx % 15 === 0) {
+      this.writeAutosaveQuiet();
+    }
+
+    try {
+      this._ignoreScrollUntil = Date.now() + 140;
+      this.$element('dlg-scroll').scrollTo({ top: 0, behavior: 'instant' });
+    } catch (e) {}
+
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearTimers();
+    const tw = getTypewriterConfig(this.autoEnabled, this.settings.textSpeed);
+    if (!tw.enabled || !this.fullText) {
+      this.displayText = this.fullText;
+      this.armAutoTimer();
+      return;
+    }
+    this.displayText = '';
+    const tick = () => {
+      if (this.mode !== 'play' || this._hidden) return;
+      const nextLen = this.displayText.length + tw.charStep;
+      this.displayText = this.fullText.slice(0, nextLen);
+      if (this.displayText.length < this.fullText.length) {
+        this._typeTimer = setTimeout(tick, tw.intervalMs);
+      } else {
+        this._typeTimer = null;
+        this.armAutoTimer();
+      }
+    };
+    tick();
+  },
+
+  writeAutosaveQuiet() {
+    if (!this._curNode) return;
+    this._saves[0] = {
+      nodeId: this._curNode.id,
+      title: '[自动] ' + (this._curNode.title || this._curNode.id),
+      chunkIdx: this._curChunkIdx,
+      lineIdx: this._curLineIdx,
+      lineNum: this._curLineIdx + 1,
+      preview: (this.speaker ? this.speaker + '：' : '') + (this.fullText || '').slice(0, 24),
+      savedAt: Date.now(),
+    };
+    this.persistSaves();
+  },
+
+  onBgError() {
+    this.bgSrc = '/common/images/black.jpg';
+  },
+
+  armAutoTimer() {
+    this.pauseAutoTimer();
+    if (
+      !this.autoEnabled ||
+      this._hidden ||
+      this.loading ||
+      this.mode !== 'play' ||
+      this._dlgTouching ||
+      this._dlgScrolling ||
+      this.displayText !== this.fullText
+    ) {
+      return;
+    }
+    const waitMs = computeAutoDelayMs(this.fullText, this.settings.autoSpeed);
+    const snapNode = this._curNode && this._curNode.id;
+    const snapChunk = this._curChunkIdx;
+    const snapLine = this._curLineIdx;
+    this._autoTimer = setTimeout(() => {
+      this._autoTimer = null;
+      if (!this.autoEnabled || this._hidden || this.loading || this.mode !== 'play') return;
+      if (this._dlgTouching || this._dlgScrolling || this.displayText !== this.fullText) return;
+      if (!this._curNode || this._curNode.id !== snapNode || this._curChunkIdx !== snapChunk || this._curLineIdx !== snapLine) return;
+      this.advance();
+    }, waitMs);
+  },
+
+  toggleAuto() {
+    this.autoEnabled = !this.autoEnabled;
+    if (this.autoEnabled) {
+      this.armAutoTimer();
+    } else {
+      this.pauseAutoTimer();
+    }
+  },
+
+  advance() {
+    if (this.loading || this.mode !== 'play') return;
+    if (this._typeTimer !== null || this.displayText !== this.fullText) {
+      if (this._typeTimer !== null) {
+        clearTimeout(this._typeTimer);
+        this._typeTimer = null;
+      }
+      this.displayText = this.fullText;
+      this.armAutoTimer();
+      return;
+    }
+    this._curLineIdx += 1;
+    this.renderLoadedLine();
+  },
+
+  prevLine() {
+    if (this.loading || this.mode !== 'play') return;
+    this.autoEnabled = false;
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearTimers();
+    if (this._curLineIdx > 0) {
+      this._curLineIdx -= 1;
+      this.renderLoadedLine();
+      return;
+    }
+    if (this._curChunkIdx > 0) {
+      this._curChunkIdx -= 1;
+      const chunkId = this._curNode.chunks[this._curChunkIdx];
+      this.loading = true;
+      const seq = ++this._loadSeq;
+      file.readText({
+        uri: '/common/story/' + chunkId + '.txt',
+        success: (res) => {
+          if (seq !== this._loadSeq || !this._alive) return;
+          this.loading = false;
+          this._chunkLines = parseChunkText(res.text);
+          this._cachedChunkId = chunkId;
+          this._curLineIdx = Math.max(0, this._chunkLines.length - 1);
+          if (this._hidden || this.mode !== 'play') {
+            this._pendingRenderOnShow = true;
+            return;
+          }
+          this.renderLoadedLine();
+        },
+        fail: () => { this.loading = false; },
+      });
+    } else {
+      this.toast('已是本节第一句');
+    }
+  },
+
+  finishCurrentNode() {
+    this.clearTimers();
+    const node = this._curNode;
+    if (!node) {
+      this.returnToTitle();
+      return;
+    }
+    this.applyNodeProgressUnlocks(node);
+
+    if (Array.isArray(node.choices) && node.choices.length > 0) {
+      const valid = [];
+      for (let i = 0; i < node.choices.length; i++) {
+        const c = node.choices[i];
+        const tgt = this._engine.resolveChoiceTarget(c.next);
+        if (tgt) valid.push({ label: c.label, next: tgt.id });
+      }
+      if (valid.length > 0) {
+        this.choiceOptions = valid;
+        this.mode = 'choice';
+        return;
+      }
+    }
+
+    const nextNode = this._engine.resolveNextNode(node.id);
+    if (nextNode) {
+      this._curNode = nextNode;
+      this._curChunkIdx = 0;
+      this._curLineIdx = 0;
+      this.applyNodeProgressUnlocks(nextNode);
+      this.loadAndRenderCurrentLine();
+      return;
+    }
+
+    this.showEndingScreen(node);
+  },
+
+  showEndingScreen(node) {
+    this.clearTimers();
+    this.autoEnabled = false;
+    this.mode = 'end';
+    let img = '';
+    let msg = '本节故事已阅读完毕。';
+    if (node.id === 'sn299') {
+      img = '/common/images/unlock02.jpg';
+      msg = '理沙篇 · 完结！进度已保存。';
+    } else if (node.id === 'sn399') {
+      img = '/common/images/unlock03.jpg';
+      msg = '小夜篇 · 完结！进度已保存。';
+    } else if (node.id === 'sn499') {
+      img = '/common/images/unlock04.jpg';
+      msg = '玛丽篇 · 完结！进度已保存。';
+    } else if (node.id === 'sn605') {
+      img = '/common/images/unlock05.jpg';
+      msg = '明里篇 · 全篇通关！';
+    } else if (node.route === 'hscene') {
+      msg = node.title + ' 回想完毕。';
+    }
+    this.endingTitle = (node.routeLabel || '') + ' · 完结';
+    this.endingImage = img;
+    this.endingMessage = msg;
+  },
+
+  pickChoice(targetId) {
+    this.beginStoryAt(targetId, 0, 0);
+  },
+
+  openGameMenu() {
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearTimers();
+    this._titleMusic.transition(SCREEN_STATES.GAME, { immediate: true });
+    this.refreshAllUiState();
+    this.mode = 'gameMenu';
+  },
+
+  toggleAutoFromMenu() {
+    this.autoEnabled = !this.autoEnabled;
+  },
+
+  resumePlay() {
+    this._titleMusic.transition(SCREEN_STATES.GAME, { immediate: true });
+    this.mode = 'play';
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearTimers();
+    if (this._pendingRenderOnShow) {
+      this._pendingRenderOnShow = false;
+      this.renderLoadedLine();
+      return;
+    }
+    if (this.displayText !== this.fullText) {
+      this.displayText = this.fullText;
+    }
+    this.armAutoTimer();
+  },
+
+  openGameSave() {
+    this._slotsReturnMode = 'gameMenu';
+    this.slotRole = 'save';
+    this.slotPage = 0;
+    this.mode = 'slots';
+    this.refreshSlotRows();
+  },
+
+  openGameLoad() {
+    this._slotsReturnMode = 'gameMenu';
+    this.slotRole = 'load';
+    this.slotPage = 0;
+    this.mode = 'slots';
+    this.refreshSlotRows();
+  },
+
+  openGameSettings() {
+    this._settingsReturnMode = 'gameMenu';
+    this.mode = 'settings';
+    this.refreshAllUiState();
+  },
+
+  skipCurrentChapter() {
+    if (!this._curNode) return;
+    const nextNode = this._engine.resolveNextNode(this._curNode.id);
+    if (!nextNode) {
+      this.finishCurrentNode();
+      return;
+    }
+    this.beginStoryAt(nextNode.id, 0, 0);
+  },
+
+  returnToTitle() {
+    this.cancelPendingStoryLoad();
+    this.clearTimers();
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.autoEnabled = false;
+    this.backToTitle();
+  },
+
+  onDlgTouchStart(e) {
+    const t = e.touches && e.touches[0];
+    this._dlgTouching = true;
+    this._dlgDragged = false;
+    this._dlgTouchStart = t ? { x: t.pageX, y: t.pageY } : null;
+    this.clearScrollTimers();
+    this.pauseAutoTimer();
+  },
+
+  onDlgTouchMove(e) {
+    const t = e.touches && e.touches[0];
+    if (t && this._dlgTouchStart && (Math.abs(t.pageX - this._dlgTouchStart.x) > 10 || Math.abs(t.pageY - this._dlgTouchStart.y) > 10)) {
+      this._dlgDragged = true;
+    }
+    this.pauseAutoTimer();
+  },
+
+  onDlgTouchEnd() {
+    this._dlgTouching = false;
+    this.schedulePostInteractionAutoResume();
+  },
+
+  onDlgTouchCancel() {
+    this._dlgTouching = false;
+    this.schedulePostInteractionAutoResume();
+  },
+
+  onDlgScroll() {
+    if (Date.now() < this._ignoreScrollUntil) return;
+    this._dlgScrolling = true;
+    this.pauseAutoTimer();
+    if (this._dlgScrollEndTimer !== null) {
+      clearTimeout(this._dlgScrollEndTimer);
+    }
+    this._dlgScrollEndTimer = setTimeout(() => {
+      this._dlgScrollEndTimer = null;
+      this._dlgScrolling = false;
+      this.armAutoTimer();
+    }, 260);
+  },
+
+  schedulePostInteractionAutoResume() {
+    if (this._dlgTouchResumeTimer !== null) {
+      clearTimeout(this._dlgTouchResumeTimer);
+    }
+    this._dlgTouchResumeTimer = setTimeout(() => {
+      this._dlgTouchResumeTimer = null;
+      if (!this._dlgTouching && !this._dlgScrolling) {
+        this.armAutoTimer();
+      }
+    }, 140);
+  },
+
+  onDlgTap() {
+    if (this._dlgDragged) return;
+    this._dlgTouching = false;
+    this._dlgScrolling = false;
+    this.clearScrollTimers();
+    this.advance();
+  },
+
+  onPageSwipe(e) {
+    if (!e || e.direction !== 'right') return;
+    if (this.mode === 'play') {
+      this.openGameMenu();
+    } else if (this.mode === 'gameMenu') {
+      this.resumePlay();
+    } else if (this.mode === 'cg') {
+      this.backToGallery();
+    } else if (this.mode === 'gallery' || this.mode === 'chapters' || this.mode === 'hscenes') {
+      this.backToExtra();
+    } else if (this.mode === 'music') {
+      this.closeMusicRoom();
+    } else if (this.mode === 'op') {
+      this.closeOpPlayer();
+    } else if (this.mode === 'extra') {
+      this.backToTitle();
+    } else if (this.mode === 'settings') {
+      this.closeSettings();
+    } else if (this.mode === 'slots') {
+      this.closeSlots();
+    }
+  },
+};
+</script>

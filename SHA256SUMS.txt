@@ -1,0 +1,5 @@
+01863d931650a0ea0ed805310d39ca179f0efd5353762d83365b6b6f5256b0c8  dist/com.antigravity.aoitori.rw5.debug.1.0.0.rpk
+01863d931650a0ea0ed805310d39ca179f0efd5353762d83365b6b6f5256b0c8  dist/com.antigravity.aoitori.rw5.1.0.0.bin
+37ae4e48b3e3d6bf299ace3b54b2196cd0df44413b0762655b2927921f4fda85  src/manifest.json
+5e282359dc968531433fc153950e477ce01c8b1c83507f0ba035110b705d0959  src/common/aoitori-text.otf
+126d2071cc79d6fd251ee0e76a4ec28eb4e474b5c4070a8a8e6710d51ddb4b2b  reports/audit.json

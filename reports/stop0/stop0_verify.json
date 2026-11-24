@@ -1,0 +1,229 @@
+{
+  "status": "STOP0_PASS",
+  "randomChecksCount": 23,
+  "passedCount": 23,
+  "checks": [
+    {
+      "kind": "ps3_longinus",
+      "item": "sn208.ps3",
+      "bytes": 280568,
+      "labelCount": 208,
+      "cjkStrings": 344,
+      "sample": "- 玛丽[8/14] -",
+      "ok": true
+    },
+    {
+      "kind": "ps3_longinus",
+      "item": "intproc.ps3",
+      "bytes": 597975,
+      "labelCount": 361,
+      "cjkStrings": 2,
+      "sample": "少　女",
+      "ok": true
+    },
+    {
+      "kind": "ps3_longinus",
+      "item": "op.ps3",
+      "bytes": 247387,
+      "labelCount": 208,
+      "cjkStrings": 0,
+      "sample": "main.ps3",
+      "ok": true
+    },
+    {
+      "kind": "ps3_longinus",
+      "item": "sn203.ps3",
+      "bytes": 350617,
+      "labelCount": 208,
+      "cjkStrings": 1014,
+      "sample": "- 玛丽[3/14] -",
+      "ok": true
+    },
+    {
+      "kind": "ps3_longinus",
+      "item": "snhrm2.ps3",
+      "bytes": 330874,
+      "labelCount": 208,
+      "cjkStrings": 888,
+      "sample": "- 理沙＆美果子Ｈ２ -",
+      "ok": true
+    },
+    {
+      "kind": "nka_zstd",
+      "item": "image/update/st-mk_x419.pb3",
+      "compressedBytes": 866980,
+      "decompressedBytes": 957975,
+      "sha256MatchH1": true,
+      "matchesDisk": true,
+      "ok": true
+    },
+    {
+      "kind": "nka_zstd",
+      "item": "image/update/st-mr_x221.pb3",
+      "compressedBytes": 823225,
+      "decompressedBytes": 904939,
+      "sha256MatchH1": true,
+      "matchesDisk": true,
+      "ok": true
+    },
+    {
+      "kind": "nka_zstd",
+      "item": "image/event/h_mr03_01n.pb3",
+      "compressedBytes": 1797751,
+      "decompressedBytes": 1979671,
+      "sha256MatchH1": true,
+      "matchesDisk": true,
+      "ok": true
+    },
+    {
+      "kind": "nka_zstd",
+      "item": "image/update/st-ak_x726.pb3",
+      "compressedBytes": 614524,
+      "decompressedBytes": 683585,
+      "sha256MatchH1": true,
+      "matchesDisk": true,
+      "ok": true
+    },
+    {
+      "kind": "nka_zstd",
+      "item": "image/update/st-ak_x531.pb3",
+      "compressedBytes": 658037,
+      "decompressedBytes": 731576,
+      "sha256MatchH1": true,
+      "matchesDisk": true,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_jbpd",
+      "item": "op.cmv#frame_2328",
+      "compressedBytes": 37736,
+      "size": [
+        1280,
+        720
+      ],
+      "bpp": 24,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_jbpd",
+      "item": "op.cmv#frame_1008",
+      "compressedBytes": 73852,
+      "size": [
+        1280,
+        720
+      ],
+      "bpp": 24,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_jbpd",
+      "item": "op.cmv#frame_0310",
+      "compressedBytes": 76416,
+      "size": [
+        1280,
+        720
+      ],
+      "bpp": 24,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_jbpd",
+      "item": "op.cmv#frame_0004",
+      "compressedBytes": 14308,
+      "size": [
+        1280,
+        720
+      ],
+      "bpp": 24,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_jbpd",
+      "item": "op.cmv#frame_2390",
+      "compressedBytes": 75916,
+      "size": [
+        1280,
+        720
+      ],
+      "bpp": 24,
+      "ok": true
+    },
+    {
+      "kind": "cmv6_audio",
+      "item": "op.cmv#audio_2915",
+      "bytes": 1909836,
+      "magic": "OggS",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "h_mr01_01r.png",
+      "size": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "backlog.png",
+      "size": [
+        1280,
+        1024
+      ],
+      "mode": "RGBA",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "ed-base.png",
+      "size": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "stand_sample.png",
+      "size": [
+        680,
+        1536
+      ],
+      "mode": "RGBA",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "up_mr_101.png",
+      "size": [
+        784,
+        1280
+      ],
+      "mode": "RGBA",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "bg010a.png",
+      "size": [
+        2048,
+        1024
+      ],
+      "mode": "RGB",
+      "ok": true
+    },
+    {
+      "kind": "decoded_image",
+      "item": "op_frame100_jbpd.png",
+      "size": [
+        1280,
+        720
+      ],
+      "mode": "RGBA",
+      "ok": true
+    }
+  ]
+}

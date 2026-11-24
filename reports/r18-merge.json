@@ -1,0 +1,822 @@
+{
+  "generatedAt": "2026-11-24T08:03:42.433602+00:00",
+  "sourceDir": "G:\\SteamLibrary\\steamapps\\common\\Aoi Tori",
+  "nkaArchive": "G:\\SteamLibrary\\steamapps\\common\\Aoi Tori\\AoiToriR18Patchv1.04.bin",
+  "conclusion": "Steam data/ directory ALREADY contains the AoiToriR18Patchv1.04.bin R18 patch pre-applied (all non-empty NKA entries match data/ SHA-256 h1; sn215.ps3 and thanks.pb3 deleted).",
+  "nkaSummary": {
+    "totalIndexEntries": 18362,
+    "nonEmptyZstdEntries": 3468,
+    "fullReplacementEntries": 2995,
+    "bsdiff40Entries": 473,
+    "zeroPayloadMarkerEntries": 14894,
+    "diskMatchesPostPatchSha256H1": 3468,
+    "diskMismatches": []
+  },
+  "diskDataInventory": {
+    "codePs3Count": 86,
+    "standaloneAdultScripts": [
+      "snhak7.ps3",
+      "snhhm1.ps3",
+      "snhmk2.ps3",
+      "snhmr3.ps3",
+      "snhmr4.ps3",
+      "snhrm2.ps3",
+      "snhrs4.ps3",
+      "snhsy4.ps3",
+      "snhyk1.ps3"
+    ],
+    "inlineAdultRouteScripts": [
+      "sn209.ps3",
+      "sn211.ps3",
+      "sn304.ps3",
+      "sn308.ps3",
+      "sn404.ps3",
+      "sn407.ps3",
+      "sn409.ps3",
+      "sn412.ps3",
+      "sn501.ps3",
+      "sn506.ps3",
+      "sn507.ps3",
+      "sn509.ps3"
+    ],
+    "eventPb3Total": 1614,
+    "eventAdultHCgCount": 1107,
+    "eventNonHCgCount": 507
+  },
+  "chineseLocalizationOverlay": {
+    "source": "Longinus.dat (read-only parsed via UTF-16LE BKDR31 hash)",
+    "ps3ScriptsLocalized": 85,
+    "unlocalizedScript": "intcode.ps3 (integer ID lookup table only, no dialogue text)",
+    "note": "Steam data/code/*.ps3 & NKA patch scripts contain English text (45,383 lines, 0 Chinese); Longinus.dat provides all 85 Simplified Chinese GBK .ps3 scripts matching post-R18-patch structure."
+  },
+  "nkaCodeScriptDiffs": [
+    {
+      "name": "code/intcode.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "9b59223ea56d0f80c1a88c485fe8efef411a52535d5705afe26f811bb3dd8d5e",
+      "h1PostPatchSha256": "93ca3d312dc98ffb598c9c201ce66167a5c3943bb8208a9676af7e76f519c7a4",
+      "matchesDiskH1": true,
+      "longinusLocalized": false
+    },
+    {
+      "name": "code/intproc.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "6bfb4acf733ce7436e581db039e298c14f66193413f87d2d42e335d297c5eab2",
+      "h1PostPatchSha256": "5f6cc34c0ecf916076018eea547124cffb8e63120473a3d8fbfab51f7dc682f8",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/logo.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "375b5a2071cfdfbf8654eebb43f47aaddbea0c752d511a6b607345558f6084de",
+      "h1PostPatchSha256": "49c3fbfea18f7390953453617b1e66abed4c9b956008c1f3fefecef5c6455613",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/main.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "1e93faa4ff5ab2cdddbc6d9ed9e3cde90dbea21fc714933d7f765000a7d221b1",
+      "h1PostPatchSha256": "5c606c066dd56f2880e05ffaec7698b5fc71c579613c10abcd629ddca93af5c2",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/menu.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "42ef1d46a94ea372d1ee09618f4e11a22b4993ce8783c3c800a7d5c4e0629be0",
+      "h1PostPatchSha256": "3a4d383b8bd9dc277692c3138720a20d475326b4c6484ef04d22e369bd8ba3e9",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/omake.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "fc3ed258c1d9c0babe91e8426299603752573b41fd23441e1782e88b4abea31b",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/op.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "b278a628dc314dbe81cdb8f3b7e382300b7dd2d122aebac298cf95b552b4a45a",
+      "h1PostPatchSha256": "3753089d3b71ac175671ec4e214a1cf3ba127120a18468e7d9cca5819438a6b9",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn101.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "c8962e83dedffe6f01e3c0c978b36c62d40852572e0bf45a1892f654247f9cb3",
+      "h1PostPatchSha256": "f907b0999c2eb5c163a80ffd3684346808338078b38b3c7a2f233d6a05e965f7",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn102.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "c731cfda5d43b77a25ab3b161982b43b82557751a723cc44b8608919192c588d",
+      "h1PostPatchSha256": "f258edf3171dc86190d85b711e93a8b45fb84d2c1966d850fd4a582cd83d8275",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn102b.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "d143536cdb37e46fe48e61ee98bd9dc9dbaa40f44247d05df0b41036476fbf75",
+      "h1PostPatchSha256": "3c9b666782f8e7ac415b1c335a0b57ab791c378cb1e9a42de869c9b407c6ddd2",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn103.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "fe7c7a5b74ff25a13533a40f77b6cf3dd26c9084cbd619ac7d89526e22dc3d64",
+      "h1PostPatchSha256": "70c96744d61efbe597a94fa153666d924c16bacdbe9ec87062e27843f9bf1f2a",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn104.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "89fb1c906b0257d58863cf6bf51af1c588c65e3e165bcd2308a4d434f6c13966",
+      "h1PostPatchSha256": "6b3511895bacce1b32e3336a6470000a356cddb3e526afd6b31ee7811ee361e1",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn105.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "de18830aa9aa0c7e622123f83e3070beb2be259a80191f661356a1b58ee05f75",
+      "h1PostPatchSha256": "469624eb2098834633af36d3ae8b438b16105cf5f39f7e5b95fcbea3a4d97cc5",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn106.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "2791f63db2c46aefbcba0698305afc6f84706d63561ec82736b25f25fad0e851",
+      "h1PostPatchSha256": "475568ab584e7e518ba8fc5523ce58b8da4cbf3b0f3a4e967e9a87d2e7dec468",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn107.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "84b397f33dd2c9019a652369a1951bb7c6f2ca81944a8dbf7c1c1eabe3b85a23",
+      "h1PostPatchSha256": "1f7d91f953ab947b1dc6d0c8ab670f53faa870241b8651f59b8156e641b5cd19",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn108.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "cd2ed4442299c8422c65cb2717e595c31abab945fa2813573996c3b875423f51",
+      "h1PostPatchSha256": "0b7bc0cf0c79929ba88f964d17d696962ba437f3fd0dc8ab03fe765c088a9138",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn201.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "9ec60a0e39cb47b686c5ad20a4941acfc6329efe1255efa21ee49fafad07f521",
+      "h1PostPatchSha256": "deea98e96b8ae3a75ace539e075dd838974b45948995420f84f26338a106a4a9",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn202.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "71e8874f21bd9ac61d8d40d4df928e0c04acb41c1dfcfc88f34dc0f05d39474b",
+      "h1PostPatchSha256": "1a4075378f1c5bdd7f44004fcb10fd554b94b9a35b5dbeb9305a1fb03eff7417",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn203.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "6362a3aa68639b260a8b7c0a786496ff41b585855003a94b857ac05967dfdbbc",
+      "h1PostPatchSha256": "06c3d9fc2dd7c895c6e3330866a1a1fdaad8fbb152b30749b20eed4de5369b89",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn204.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "7bddde8c97e8823493cb11d834fd4f95f226ece4b83034cc1932ab2ea51c49a3",
+      "h1PostPatchSha256": "9d3c291f4e2d9c49682f99369b399529f16c6c2e74f4a298150c64af1cdfe34a",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn205.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "f838a261f17f3eb2a640c8d7566ace31a73c544c95a7be58ebec5e46a279c4e9",
+      "h1PostPatchSha256": "ec30d1b9f58707af2639e5b36b4419e59acfa4e5e56c16bdeb1b07e7f58a13be",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn206.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "746d6cbf065d5666822b95c66a181cb6645e33f894d8abc61932f7688f51b48c",
+      "h1PostPatchSha256": "f8f1ef8967d537bee8c9ffca43e8be05dfe16927e312ed2867e716afb743de37",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn207.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "e9a9ccd01a88ae3e0f2d02e4c30869cac3d4b65b9cfa833fdd9aaa0b5a6fb819",
+      "h1PostPatchSha256": "bbd0a39dd3d319a912356e35bff1add150721631d2114b9e550d2ce505834475",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn208.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "28da2e39ddcfe5d0254b76543b86749f18c44a98831e154c239f964e317c2513",
+      "h1PostPatchSha256": "5c18f05f6cc5466f7d58e12a7c442010ff9ee85104a673a2b4eaaed2d344574f",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn209.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "f852fce244536873f3f4411e06fc5529f025fc62d6fbcf202dd2ed22475d4d48",
+      "h1PostPatchSha256": "22bd6f89b1800019f75248049346b6f98e4d1796dd887e25fbe110b5d004e7d3",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn210.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "01da374f577fd52550f392f1425eeb98f86f1e634b28acbddd5a14ff34498c4a",
+      "h1PostPatchSha256": "a5637af1a187b6f4f2f429e9559f47b1395a0c1e0f94d9ced3d104e10762c651",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn211.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "669616ace124d71b2902ea7eaf06eec08dbcc3bef568cc9975ce167ceb9b71c3",
+      "h1PostPatchSha256": "45011dba934c17021af264099ee7a67f860bb08e289099bc5601fed137a07a44",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn212.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "1e57d19990ff82109f12cb7e9065b217b6a2e28dca73df8fea1584800fd9273b",
+      "h1PostPatchSha256": "1aaf5d5ce3bc85eb890d44a6f5f9607d564bbe51d7cd6d6ccab03ef38b9e5aea",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn213.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "88ae6163521b7a797ba2ebfc3da8fe3f796f914441f93abc322a1dced56cff9a",
+      "h1PostPatchSha256": "7a07e02451305c62908e10962dfc6eba3d16ba44cbecc93d7dd726d20130ddf8",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn214.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "b29811720f7af1c7c5a6dade464237d27c09b449f8d67b9b00ae242c57092b3f",
+      "h1PostPatchSha256": "6c40af42fd41b6caa16a602e803b4a925e015ca7670490365a8b603a4aa577c0",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn299.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "005cabf4d34c512ab39d938a3a568d45258c4df1a41c7f7485d398cf62be9419",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn301.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "4904a8e3a36f4121fe335fc9aa70ab9326f81f9f521609ad3fffb65ebfccb3b6",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn302.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "78917b85db60392b55cfbbec08f8729d90dea9a0d3a2100c8216300a7a1c14d8",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn303.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "a1a6d727320386f4ca900dfe1253023c355788e01845938656dcd17b5ec908df",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn304.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "b2765b073660ea89fb37210cbb5e2b8d227854e66923a538723831e13075f4f0",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn305.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "8c8d07e5b83fb79cbe9ada0cfb23286dabad886070c81db7d75c045ebf83a819",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn307.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "9288f4f58f1b4438c0e880d49a148f46ef2b3e613a05fe6668ac59e026b5624e",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn308.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "ec0e9e36246d0f61aa04c2e1976cd4501f7d1d2ad65005fddd77d9524c4f92f9",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn309.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "87921bd5e905d60cf48aa64bf9b2920bf17667a1d29d916941acc41867ed9394",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn310.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "6cf021a6006f0488c846577ef27fffb5e28806d3e05d12a3a5d4620c01526cf7",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn311.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "5b8dc84b4d56e54e23dafae76f46ed0c5a319abef48746dbfb099ee7dee3efdd",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn312.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "63bc18c0da4ce7d478121d76b05abb006ac3cfe2d36436b84aebdb3a54f0df1b",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn399.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "31bd208d153efcdcd566f4df7692b3d71fab35df89741a4d311cc69f5072e78e",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn401.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "ff9b1b90f569146e992e30bf8f1ad38aa22acb55c13cd82fad779175f050e4fd",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn402.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "ee238af4caf2e62f5ae22a9b58618be9a3aec4cc6d046668e8a678402968dd87",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn403.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "e4732711c8f56bfc949fae13ee66cdf78a99c4939a89ae680600e8cd12313e84",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn404.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "c23450165849fe94e1f6bdaba8850d78ba49ab41ac87c9d7bc5298154fe2e4d0",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn405.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "515d506f8078a012297948464378266d65d1d39a0897f224d280e851cb55a428",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn406.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "a46c74beea64fb8789ef0cbfbb4ac72500ec724777a7cf808556ed8820cfb0c0",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn407.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "99c3edba73b54451b9168827d60d3466dc6317f62b2495635d9439e2fc3411f1",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn408.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "9eaccc8368a7bf8d1a4dd105c78804d4351470735519e552187dfc35f6f43f1d",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn409.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "fe69efe6c7e0dbab7c18e07a8b7bb615ace1f8c4267a80c1e9238dbe619adec1",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn410.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "14f693deef99ffab505f8e4d200f6030b515451231cb95c012f616ced613cc7b",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn411.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "39530bc40a886d37ec1b0c12fafd1809277661eb68f62257951c7d7c19476726",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn412.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "b3433dd051c060ac115e9e58e2991d1174df8b354d76f9131f64800ef64730ee",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn413.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "314de2019e4cf40d3fd409caadd652b532dfdfa6bd55fb33b3145bb6f8bd6861",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn499.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "60caa322077f0af16fbc4616148af014553547a62bb097d48d04d3f3b95a7b8e",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn501.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "0eed860c6a29ba54fe21c590a7965ab8a24eb362cfb0c99a2c55eb0ea5fcce73",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn502.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "ed764cdcf14bf9a71924d2489f823801f9cdef8e2619ca9b14dec59b44decf3c",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn503.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "2392636cee991712a5c11deb37ff9eecabf548ddbaaf61d7f7066ec9e4d910ae",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn504.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "6f05699f2576a9d330ffec01775f674167db02e5c87a41816005ca6489177c9c",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn505.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "c88c55d8a65724512aad5f1b5330283e8bb25e4daea3c607be5781dcca701f9e",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn506.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "e4f03ca7032ec29765036797d1e40dd3e7bf88bc59d426e7dd99d658cf3978c4",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn507.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "78cd0765d29a85a76e7e3f0cfbc2bcada68f5dc7537cebbed473c6c3467148c3",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn508.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "f31dbef90dd9f75465f1fdc445443053c02128da67fbdc195133657a64b7e4d3",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn509.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "f4631907a300bd5d5b78d7be6cc6f2867c64fd9812c402f7384b8b1996c10942",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn510.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "249dcf5d743132028424fc8394e6f80d39e3b6895226852cdb561245fc788871",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn601.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "aa9c331e6d51c3da17270439368dc1bafec9f1bf1914538f4b967fa9e3fa33a7",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn602.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "3db82b16e517c12e5b249bc7883494d2f2e9bb72a7187c2834f2c8a14cb55bdf",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn603.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "78739c1dc5d85975b358679a1d96239881410f70a797b603900865161b48666f",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn604.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "12b133a560e120d833cd817104c36bbdf7c8f628189a10531f58a25d2709a51d",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn605.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "f59e2546f3c0b67c32ce345f0aae279c337a2f9607e40e097ca3de5d421c5bfa",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/sn901.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "4a871db41a420590a97daf26c3280fe91ed366755e82078ca93295e6117f3081",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhak7.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "0eb1b0623220b4e168441697353646311168b7b809fe2527ca633008bff5a904",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhhm1.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "ccab019b64d583373f439fa10153c8e6ec2396c68e6eea1db1bf6dc925296a19",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhmk2.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "c1473b58d725e2e76c2f730097d4282f4d1fb7d2e52a45026f6fb175bf221b55",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhmr3.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "1bd670ca9bb7bc17d765674a1e2b81a568007a4cfa5089752d24a2f36c7577a2",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhmr4.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "f0c6c5f2e581203cd6d9baade91f14399faad8631b2fce028fb021fbfdce5de8",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhrm2.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "fcf1c0dc1ec8db9d6415a54e4f0c5e47b24785e4559f2750ac16bccd8b5ecbe3",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhrs4.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "e10d8d39dc6ab160bc7b054fd058c2389cb7411d94984d6abaf9d8f085a987e1",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhsy4.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "30afc8a5abcd03be4ac16012a0a15cb2ad580f8e3fe55c2e5e1660b4d0c705d7",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/snhyk1.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "0d20f313d8c815d76702fbfd13aabcc3d1e722211bb229648aa2f07c1755feb9",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/staff.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "9ef56d2e7b454ac1c790253d7d12b0cb451a8afcad36f69caf999ebdfe16be1a",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/staff2.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "6e8120fcd651b0d73e085d1f6330b98abead78352822b9a37f35a0f05f512264",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/staff3.ps3",
+      "op": "full",
+      "h0PrePatchSha256": "",
+      "h1PostPatchSha256": "2ceba123c0fd7bfa27e7477cb56f4b48fa8e980090f52aa07ab55c26106e1c97",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    },
+    {
+      "name": "code/start.ps3",
+      "op": "bsdiff40",
+      "h0PrePatchSha256": "9683b62b821bc9780c570cb59de3730b528d4a9e2cff71652ae94b515512e384",
+      "h1PostPatchSha256": "076dd9b33a8523775b0fae9e89451e06a40aba2fd78a680129dc295db1a8f645",
+      "matchesDiskH1": true,
+      "longinusLocalized": true
+    }
+  ],
+  "nkaCodeSummary": {
+    "totalPatchedScripts": 86,
+    "fullReplacedCount": 56,
+    "bsdiff40Count": 30,
+    "allMatchDiskH1": true
+  },
+  "nkaEventHCgCount": 1107,
+  "nkaOtherEventCgCount": 507,
+  "specialAndPackChecks": [
+    {
+      "path": "code/sn215.ps3",
+      "flags": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "patchPayloadBytes": 0,
+      "h1": "",
+      "h2": "",
+      "diskExists": false,
+      "diskBytes": 0
+    },
+    {
+      "path": "image/chip/thanks.pb3",
+      "flags": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "patchPayloadBytes": 0,
+      "h1": "",
+      "h2": "",
+      "diskExists": false,
+      "diskBytes": 0
+    },
+    {
+      "path": "pack/balloon.cpz",
+      "flags": [
+        3,
+        0,
+        2,
+        0
+      ],
+      "patchPayloadBytes": 351561586,
+      "h1": "9a318bb35b2469e7980c73e6975f13c1c04716be5d881af28c8ae93a49aa7045",
+      "h2": "",
+      "diskExists": true,
+      "diskBytes": 351706727
+    },
+    {
+      "path": "pack/stand.cpz",
+      "flags": [
+        3,
+        0,
+        2,
+        0
+      ],
+      "patchPayloadBytes": 340472501,
+      "h1": "ed3cdaa99824876124978d1bdcd58a69b351bbc75411d72f0c0e37489c1059fb",
+      "h2": "",
+      "diskExists": true,
+      "diskBytes": 341280971
+    },
+    {
+      "path": "pack/up.cpz",
+      "flags": [
+        3,
+        0,
+        2,
+        0
+      ],
+      "patchPayloadBytes": 477611119,
+      "h1": "eae64f6668062e0a11b10c9066929da4f53e6e787b1ed2627c32ec4128262a32",
+      "h2": "",
+      "diskExists": true,
+      "diskBytes": 480259762
+    }
+  ]
+}

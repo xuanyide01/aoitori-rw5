@@ -1,0 +1,194 @@
+{
+  "sourceScript": "menu.ps3 (L207 @ 0x3b534..0x3ec80) & sn103.ps3 & sn299/sn399/sn499 L186",
+  "idleOpTimeoutMs": 30000,
+  "idleOpScript": "op.ps3",
+  "voiceGreetingOnEnter": {
+    "variable": "G[46]",
+    "pool": [
+      "sys102.ogg",
+      "sys202.ogg",
+      "sys302.ogg",
+      "sys402.ogg",
+      "sys502.ogg",
+      "sys602.ogg",
+      "sys702.ogg"
+    ],
+    "selection": "sys_rand(7) -> V0 % 7 (0..6)"
+  },
+  "titleStates": [
+    {
+      "stateId": 0,
+      "variable": "V12 = 0",
+      "condition": "Initial state (P[2147] == 0 && P[2156] == 0)",
+      "conditionLabel": "初始标题",
+      "chipTexture": "title01_chip.pb3",
+      "bgRect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "titleBgmId": 36,
+      "titleBgmFile": "bgm36.ogg",
+      "menuButtons": [
+        {
+          "id": 1,
+          "label": "开始游戏",
+          "action": "sn101.ps3",
+          "unlocked": "always"
+        },
+        {
+          "id": 2,
+          "label": "继续/读取",
+          "action": "LOAD_MENU (G[2192]=5, sys_int_call(48))",
+          "unlocked": "always"
+        },
+        {
+          "id": 3,
+          "label": "鉴赏/EXTRA",
+          "action": "omake.ps3",
+          "unlocked": "always in PC menu (button 3 always registered at V24=2; G[94]=0)"
+        },
+        {
+          "id": 4,
+          "label": "系统设置",
+          "action": "CONFIG_MENU (G[2192]=G[2193], sys_int_call(48))",
+          "unlocked": "always"
+        },
+        {
+          "id": 5,
+          "label": "退出游戏",
+          "action": "sys_end",
+          "unlocked": "always"
+        }
+      ]
+    },
+    {
+      "stateId": 1,
+      "variable": "V12 = 1",
+      "condition": "P[2147] != 0 && P[2156] == 0",
+      "conditionLabel": "共通线进度触发 (sn103.ps3 设置 P[2147]=1)",
+      "chipTexture": "title02_chip.pb3",
+      "bgRect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "titleBgmId": 36,
+      "titleBgmFile": "bgm36.ogg",
+      "menuButtons": [
+        {
+          "id": 1,
+          "label": "开始游戏",
+          "action": "sn101.ps3",
+          "unlocked": "always"
+        },
+        {
+          "id": 2,
+          "label": "继续/读取",
+          "action": "LOAD_MENU",
+          "unlocked": "always"
+        },
+        {
+          "id": 3,
+          "label": "鉴赏/EXTRA",
+          "action": "omake.ps3",
+          "unlocked": "always"
+        },
+        {
+          "id": 4,
+          "label": "系统设置",
+          "action": "CONFIG_MENU",
+          "unlocked": "always"
+        },
+        {
+          "id": 5,
+          "label": "退出游戏",
+          "action": "sys_end",
+          "unlocked": "always"
+        }
+      ]
+    },
+    {
+      "stateId": 2,
+      "variable": "V12 = 2",
+      "condition": "P[2156] != 0 (sn299/sn399/sn499 L186 当 P[2150]&&P[2151]&&P[2152] 均已达成时设置 P[2156]=1)",
+      "conditionLabel": "三条个人线全通后解锁真结局线 (理沙 P[2150] + 小夜 P[2151] + 玛丽 P[2152])",
+      "chipTexture": "title03_chip.pb3",
+      "bgRect": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "titleBgmId": 33,
+      "titleBgmFile": "bgm33.ogg",
+      "menuButtons": [
+        {
+          "id": 1,
+          "label": "开始游戏",
+          "action": "sn101.ps3",
+          "unlocked": "always"
+        },
+        {
+          "id": 6,
+          "label": "真相篇/After Story",
+          "action": "sn501.ps3",
+          "unlocked": "P[2156] != 0"
+        },
+        {
+          "id": 2,
+          "label": "继续/读取",
+          "action": "LOAD_MENU",
+          "unlocked": "always"
+        },
+        {
+          "id": 3,
+          "label": "鉴赏/EXTRA",
+          "action": "omake.ps3",
+          "unlocked": "always"
+        },
+        {
+          "id": 4,
+          "label": "系统设置",
+          "action": "CONFIG_MENU",
+          "unlocked": "always"
+        },
+        {
+          "id": 5,
+          "label": "退出游戏",
+          "action": "sys_end",
+          "unlocked": "always"
+        }
+      ]
+    }
+  ],
+  "watch5Adaptation": {
+    "screenStateAudioPolicy": "TITLE and TITLE_SUB share title BGM without restarting or stacking; GAME stops/fades out title BGM; returning to TITLE restarts title BGM.",
+    "titleBgAndMenuRule": "Follows original V12 progression (title01 -> title02 when sn103/P[2147] reached -> title03 + sn501 button unlocked when sn299 & sn399 & sn499 cleared / P[2156]=1). For Watch 5 portability, also reflects clear flags persistently in settings/progress store.",
+    "titleChipTextures": [
+      {
+        "file": "title01_chip.pb3",
+        "width": 1280,
+        "height": 1024,
+        "topOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title01_chip_top720.png",
+        "flipOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title01_chip_bot720_flip.png"
+      },
+      {
+        "file": "title02_chip.pb3",
+        "width": 1280,
+        "height": 1024,
+        "topOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title02_chip_top720.png",
+        "flipOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title02_chip_bot720_flip.png"
+      },
+      {
+        "file": "title03_chip.pb3",
+        "width": 1280,
+        "height": 1280,
+        "topOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title03_chip_top720.png",
+        "flipOut": "E:\\Antigravity\\aoitori-rw5\\probe\\title03_chip_bot720_flip.png"
+      }
+    ]
+  }
+}

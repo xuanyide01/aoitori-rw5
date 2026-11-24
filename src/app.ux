@@ -1,0 +1,10 @@
+<script>
+export default {
+  onCreate() {
+    console.log('AOITORI_RW5 app created');
+  },
+  onDestroy() {
+    console.log('AOITORI_RW5 app destroyed');
+  },
+};
+</script>

@@ -1,0 +1,11 @@
+.qa/
+build/
+converted/
+dist/
+handoff-to-deepseek/
+node_modules/
+probe/
+tools/*.exe
+tools/__pycache__/
+tools/refs/
+*.pyc

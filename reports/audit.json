@@ -1,0 +1,39 @@
+{
+  "rpk": {
+    "file": "com.antigravity.aoitori.rw5.debug.1.0.0.rpk",
+    "version": "1.0.0",
+    "bytes": 24747409,
+    "expandedBytes": 27473166,
+    "entries": 3175,
+    "sha256": "01863d931650a0ea0ed805310d39ca179f0efd5353762d83365b6b6f5256b0c8",
+    "certificateSha256": "4e8e1ee24968b0dad6d0956a7e14d848b38b22a203f39c389a45d8737bdc4585",
+    "zipCRCValid": true,
+    "outerSignatureValid": true,
+    "innerSignatureValid": true,
+    "allFileDigestsValid": true,
+    "signedFiles": 3164
+  },
+  "manifest": {
+    "package": "com.antigravity.aoitori.rw5",
+    "name": "アオイトリ",
+    "versionName": "1.0.0",
+    "designWidth": 432
+  },
+  "limits": {
+    "maxBytes": 25000000,
+    "bytesMargin": 252591,
+    "maxEntries": 4100,
+    "entriesMargin": 925
+  },
+  "checks": {
+    "fontBytes": 1352968,
+    "nonAsciiCharsChecked": 3160,
+    "missingGlyphs": 0,
+    "storyNodes": 100,
+    "storyChunks": 184,
+    "bgsChecked": 1684,
+    "spritesChecked": 950,
+    "opFramesChecked": 417
+  },
+  "physicalDeviceTested": false
+}

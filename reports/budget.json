@@ -1,0 +1,61 @@
+{
+  "hardLimits": {
+    "maxPackageBytes": 25000000,
+    "maxZipEntries": 4100
+  },
+  "estimated": {
+    "totalFiles": 3177,
+    "totalRawBytes": 27417546,
+    "estimatedPackageBytes": 25669469,
+    "headroomBytes": -669469,
+    "entryHeadroom": 923,
+    "withinBudget": false
+  },
+  "breakdown": {
+    "story": {
+      "files": 184,
+      "rawBytes": 3042430,
+      "estZipBytes": 1239981
+    },
+    "images_bg_ev": {
+      "files": 586,
+      "rawBytes": 6364877,
+      "estZipBytes": 6402381
+    },
+    "images_h_adult": {
+      "files": 1106,
+      "rawBytes": 8347261,
+      "estZipBytes": 8418045
+    },
+    "sprites_base": {
+      "files": 206,
+      "rawBytes": 2911980,
+      "estZipBytes": 2925164
+    },
+    "sprites_faces": {
+      "files": 648,
+      "rawBytes": 1231490,
+      "estZipBytes": 1272962
+    },
+    "opening": {
+      "files": 417,
+      "rawBytes": 1498225,
+      "estZipBytes": 1524913
+    },
+    "audio": {
+      "files": 3,
+      "rawBytes": 2417834,
+      "estZipBytes": 2418026
+    },
+    "font": {
+      "files": 1,
+      "rawBytes": 1352968,
+      "estZipBytes": 1033174
+    },
+    "code_and_other": {
+      "files": 22,
+      "rawBytes": 250481,
+      "estZipBytes": 104253
+    }
+  }
+}

@@ -1,0 +1,552 @@
+{
+  "status": "BLOCKED_NO_CHINESE_IN_PS3",
+  "ps3FilesChecked": 86,
+  "totalEnglishStrings": 45383,
+  "uniqueNonAsciiStringsAcrossAllPs3": [
+    "- Mikako H１ -",
+    "Gi　rl",
+    "\\\"～～～～～\\\"",
+    "…―─",
+    "　Ritsu　",
+    "　　　",
+    "。、」』）！？”～ー♪",
+    "テスト表示中です。",
+    "メアリー？",
+    "少女Ｃ"
+  ],
+  "chineseStringsFound": 0,
+  "psCpzEntries": [
+    "maskeffectcut.o2",
+    "maskeffectput.o2",
+    "transeffect.o2"
+  ],
+  "nkaMatchesDiskH1": {
+    "code": "86/86 (1 deleted: code/sn215.ps3)",
+    "image": "3378/3378 (1 deleted: image/chip/thanks.pb3)",
+    "packsAndVideo": [
+      "pack/balloon.cpz",
+      "pack/stand.cpz",
+      "pack/up.cpz",
+      "video/op.cmv"
+    ]
+  },
+  "reason": "Steam版 data/code/*.ps3 与 AoiToriR18Patchv1.04.bin 均为官英文本（仅含少量 CP932 标点/调试/人名残余，0 条中文）。天之圣杯汉化组中文文本位于禁碰的 Longinus.dat/.dll/.ini 外挂运行时补丁中。",
+  "files": [
+    {
+      "script": "intcode.ps3",
+      "unpackedBytes": 230042,
+      "englishStrings": 0,
+      "nonAsciiCleanStrings": 0
+    },
+    {
+      "script": "intproc.ps3",
+      "unpackedBytes": 602858,
+      "englishStrings": 0,
+      "nonAsciiCleanStrings": 9
+    },
+    {
+      "script": "logo.ps3",
+      "unpackedBytes": 255021,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "main.ps3",
+      "unpackedBytes": 261506,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "menu.ps3",
+      "unpackedBytes": 267818,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "omake.ps3",
+      "unpackedBytes": 369305,
+      "englishStrings": 4,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "op.ps3",
+      "unpackedBytes": 253770,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "sn101.ps3",
+      "unpackedBytes": 496564,
+      "englishStrings": 1416,
+      "nonAsciiCleanStrings": 202
+    },
+    {
+      "script": "sn102.ps3",
+      "unpackedBytes": 360656,
+      "englishStrings": 568,
+      "nonAsciiCleanStrings": 150
+    },
+    {
+      "script": "sn102b.ps3",
+      "unpackedBytes": 405218,
+      "englishStrings": 923,
+      "nonAsciiCleanStrings": 200
+    },
+    {
+      "script": "sn103.ps3",
+      "unpackedBytes": 384907,
+      "englishStrings": 774,
+      "nonAsciiCleanStrings": 156
+    },
+    {
+      "script": "sn104.ps3",
+      "unpackedBytes": 497842,
+      "englishStrings": 1350,
+      "nonAsciiCleanStrings": 246
+    },
+    {
+      "script": "sn105.ps3",
+      "unpackedBytes": 607528,
+      "englishStrings": 2064,
+      "nonAsciiCleanStrings": 331
+    },
+    {
+      "script": "sn106.ps3",
+      "unpackedBytes": 429964,
+      "englishStrings": 916,
+      "nonAsciiCleanStrings": 168
+    },
+    {
+      "script": "sn107.ps3",
+      "unpackedBytes": 362692,
+      "englishStrings": 625,
+      "nonAsciiCleanStrings": 144
+    },
+    {
+      "script": "sn108.ps3",
+      "unpackedBytes": 350141,
+      "englishStrings": 493,
+      "nonAsciiCleanStrings": 82
+    },
+    {
+      "script": "sn201.ps3",
+      "unpackedBytes": 287673,
+      "englishStrings": 201,
+      "nonAsciiCleanStrings": 74
+    },
+    {
+      "script": "sn202.ps3",
+      "unpackedBytes": 331722,
+      "englishStrings": 397,
+      "nonAsciiCleanStrings": 64
+    },
+    {
+      "script": "sn203.ps3",
+      "unpackedBytes": 369593,
+      "englishStrings": 614,
+      "nonAsciiCleanStrings": 109
+    },
+    {
+      "script": "sn204.ps3",
+      "unpackedBytes": 315764,
+      "englishStrings": 354,
+      "nonAsciiCleanStrings": 94
+    },
+    {
+      "script": "sn205.ps3",
+      "unpackedBytes": 310479,
+      "englishStrings": 292,
+      "nonAsciiCleanStrings": 75
+    },
+    {
+      "script": "sn206.ps3",
+      "unpackedBytes": 326608,
+      "englishStrings": 387,
+      "nonAsciiCleanStrings": 81
+    },
+    {
+      "script": "sn207.ps3",
+      "unpackedBytes": 286623,
+      "englishStrings": 163,
+      "nonAsciiCleanStrings": 41
+    },
+    {
+      "script": "sn208.ps3",
+      "unpackedBytes": 290730,
+      "englishStrings": 228,
+      "nonAsciiCleanStrings": 49
+    },
+    {
+      "script": "sn209.ps3",
+      "unpackedBytes": 388792,
+      "englishStrings": 775,
+      "nonAsciiCleanStrings": 150
+    },
+    {
+      "script": "sn210.ps3",
+      "unpackedBytes": 348719,
+      "englishStrings": 523,
+      "nonAsciiCleanStrings": 104
+    },
+    {
+      "script": "sn211.ps3",
+      "unpackedBytes": 411322,
+      "englishStrings": 918,
+      "nonAsciiCleanStrings": 152
+    },
+    {
+      "script": "sn212.ps3",
+      "unpackedBytes": 302994,
+      "englishStrings": 330,
+      "nonAsciiCleanStrings": 60
+    },
+    {
+      "script": "sn213.ps3",
+      "unpackedBytes": 341982,
+      "englishStrings": 500,
+      "nonAsciiCleanStrings": 95
+    },
+    {
+      "script": "sn214.ps3",
+      "unpackedBytes": 295062,
+      "englishStrings": 232,
+      "nonAsciiCleanStrings": 54
+    },
+    {
+      "script": "sn299.ps3",
+      "unpackedBytes": 264961,
+      "englishStrings": 71,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "sn301.ps3",
+      "unpackedBytes": 272704,
+      "englishStrings": 120,
+      "nonAsciiCleanStrings": 43
+    },
+    {
+      "script": "sn302.ps3",
+      "unpackedBytes": 399043,
+      "englishStrings": 838,
+      "nonAsciiCleanStrings": 190
+    },
+    {
+      "script": "sn303.ps3",
+      "unpackedBytes": 361786,
+      "englishStrings": 609,
+      "nonAsciiCleanStrings": 162
+    },
+    {
+      "script": "sn304.ps3",
+      "unpackedBytes": 461061,
+      "englishStrings": 1195,
+      "nonAsciiCleanStrings": 218
+    },
+    {
+      "script": "sn305.ps3",
+      "unpackedBytes": 360654,
+      "englishStrings": 605,
+      "nonAsciiCleanStrings": 142
+    },
+    {
+      "script": "sn307.ps3",
+      "unpackedBytes": 367577,
+      "englishStrings": 578,
+      "nonAsciiCleanStrings": 112
+    },
+    {
+      "script": "sn308.ps3",
+      "unpackedBytes": 433731,
+      "englishStrings": 1037,
+      "nonAsciiCleanStrings": 149
+    },
+    {
+      "script": "sn309.ps3",
+      "unpackedBytes": 340008,
+      "englishStrings": 486,
+      "nonAsciiCleanStrings": 105
+    },
+    {
+      "script": "sn310.ps3",
+      "unpackedBytes": 340637,
+      "englishStrings": 494,
+      "nonAsciiCleanStrings": 73
+    },
+    {
+      "script": "sn311.ps3",
+      "unpackedBytes": 415921,
+      "englishStrings": 983,
+      "nonAsciiCleanStrings": 192
+    },
+    {
+      "script": "sn312.ps3",
+      "unpackedBytes": 271529,
+      "englishStrings": 107,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "sn399.ps3",
+      "unpackedBytes": 261034,
+      "englishStrings": 46,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "sn401.ps3",
+      "unpackedBytes": 259361,
+      "englishStrings": 33,
+      "nonAsciiCleanStrings": 15
+    },
+    {
+      "script": "sn402.ps3",
+      "unpackedBytes": 336669,
+      "englishStrings": 414,
+      "nonAsciiCleanStrings": 95
+    },
+    {
+      "script": "sn403.ps3",
+      "unpackedBytes": 309139,
+      "englishStrings": 303,
+      "nonAsciiCleanStrings": 81
+    },
+    {
+      "script": "sn404.ps3",
+      "unpackedBytes": 443584,
+      "englishStrings": 1043,
+      "nonAsciiCleanStrings": 251
+    },
+    {
+      "script": "sn405.ps3",
+      "unpackedBytes": 350102,
+      "englishStrings": 538,
+      "nonAsciiCleanStrings": 82
+    },
+    {
+      "script": "sn406.ps3",
+      "unpackedBytes": 333286,
+      "englishStrings": 443,
+      "nonAsciiCleanStrings": 92
+    },
+    {
+      "script": "sn407.ps3",
+      "unpackedBytes": 379813,
+      "englishStrings": 710,
+      "nonAsciiCleanStrings": 117
+    },
+    {
+      "script": "sn408.ps3",
+      "unpackedBytes": 320555,
+      "englishStrings": 362,
+      "nonAsciiCleanStrings": 93
+    },
+    {
+      "script": "sn409.ps3",
+      "unpackedBytes": 416199,
+      "englishStrings": 816,
+      "nonAsciiCleanStrings": 122
+    },
+    {
+      "script": "sn410.ps3",
+      "unpackedBytes": 282749,
+      "englishStrings": 142,
+      "nonAsciiCleanStrings": 38
+    },
+    {
+      "script": "sn411.ps3",
+      "unpackedBytes": 347037,
+      "englishStrings": 550,
+      "nonAsciiCleanStrings": 101
+    },
+    {
+      "script": "sn412.ps3",
+      "unpackedBytes": 352358,
+      "englishStrings": 601,
+      "nonAsciiCleanStrings": 97
+    },
+    {
+      "script": "sn413.ps3",
+      "unpackedBytes": 275247,
+      "englishStrings": 122,
+      "nonAsciiCleanStrings": 25
+    },
+    {
+      "script": "sn499.ps3",
+      "unpackedBytes": 264169,
+      "englishStrings": 64,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "sn501.ps3",
+      "unpackedBytes": 554408,
+      "englishStrings": 1829,
+      "nonAsciiCleanStrings": 276
+    },
+    {
+      "script": "sn502.ps3",
+      "unpackedBytes": 348000,
+      "englishStrings": 548,
+      "nonAsciiCleanStrings": 128
+    },
+    {
+      "script": "sn503.ps3",
+      "unpackedBytes": 327792,
+      "englishStrings": 452,
+      "nonAsciiCleanStrings": 79
+    },
+    {
+      "script": "sn504.ps3",
+      "unpackedBytes": 371325,
+      "englishStrings": 658,
+      "nonAsciiCleanStrings": 199
+    },
+    {
+      "script": "sn505.ps3",
+      "unpackedBytes": 343217,
+      "englishStrings": 511,
+      "nonAsciiCleanStrings": 94
+    },
+    {
+      "script": "sn506.ps3",
+      "unpackedBytes": 433662,
+      "englishStrings": 1129,
+      "nonAsciiCleanStrings": 223
+    },
+    {
+      "script": "sn507.ps3",
+      "unpackedBytes": 359472,
+      "englishStrings": 632,
+      "nonAsciiCleanStrings": 126
+    },
+    {
+      "script": "sn508.ps3",
+      "unpackedBytes": 360924,
+      "englishStrings": 634,
+      "nonAsciiCleanStrings": 85
+    },
+    {
+      "script": "sn509.ps3",
+      "unpackedBytes": 424992,
+      "englishStrings": 995,
+      "nonAsciiCleanStrings": 185
+    },
+    {
+      "script": "sn510.ps3",
+      "unpackedBytes": 432427,
+      "englishStrings": 1179,
+      "nonAsciiCleanStrings": 124
+    },
+    {
+      "script": "sn601.ps3",
+      "unpackedBytes": 319947,
+      "englishStrings": 437,
+      "nonAsciiCleanStrings": 14
+    },
+    {
+      "script": "sn602.ps3",
+      "unpackedBytes": 382115,
+      "englishStrings": 744,
+      "nonAsciiCleanStrings": 25
+    },
+    {
+      "script": "sn603.ps3",
+      "unpackedBytes": 498910,
+      "englishStrings": 1518,
+      "nonAsciiCleanStrings": 133
+    },
+    {
+      "script": "sn604.ps3",
+      "unpackedBytes": 285114,
+      "englishStrings": 221,
+      "nonAsciiCleanStrings": 51
+    },
+    {
+      "script": "sn605.ps3",
+      "unpackedBytes": 307630,
+      "englishStrings": 312,
+      "nonAsciiCleanStrings": 71
+    },
+    {
+      "script": "sn901.ps3",
+      "unpackedBytes": 261952,
+      "englishStrings": 68,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "snhak7.ps3",
+      "unpackedBytes": 350041,
+      "englishStrings": 570,
+      "nonAsciiCleanStrings": 69
+    },
+    {
+      "script": "snhhm1.ps3",
+      "unpackedBytes": 431259,
+      "englishStrings": 988,
+      "nonAsciiCleanStrings": 171
+    },
+    {
+      "script": "snhmk2.ps3",
+      "unpackedBytes": 336018,
+      "englishStrings": 457,
+      "nonAsciiCleanStrings": 84
+    },
+    {
+      "script": "snhmr3.ps3",
+      "unpackedBytes": 359536,
+      "englishStrings": 609,
+      "nonAsciiCleanStrings": 131
+    },
+    {
+      "script": "snhmr4.ps3",
+      "unpackedBytes": 341790,
+      "englishStrings": 513,
+      "nonAsciiCleanStrings": 72
+    },
+    {
+      "script": "snhrm2.ps3",
+      "unpackedBytes": 344100,
+      "englishStrings": 500,
+      "nonAsciiCleanStrings": 55
+    },
+    {
+      "script": "snhrs4.ps3",
+      "unpackedBytes": 324386,
+      "englishStrings": 388,
+      "nonAsciiCleanStrings": 79
+    },
+    {
+      "script": "snhsy4.ps3",
+      "unpackedBytes": 375959,
+      "englishStrings": 712,
+      "nonAsciiCleanStrings": 129
+    },
+    {
+      "script": "snhyk1.ps3",
+      "unpackedBytes": 325166,
+      "englishStrings": 412,
+      "nonAsciiCleanStrings": 87
+    },
+    {
+      "script": "staff.ps3",
+      "unpackedBytes": 260612,
+      "englishStrings": 3,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "staff2.ps3",
+      "unpackedBytes": 255220,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "staff3.ps3",
+      "unpackedBytes": 255890,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 4
+    },
+    {
+      "script": "start.ps3",
+      "unpackedBytes": 5437,
+      "englishStrings": 1,
+      "nonAsciiCleanStrings": 0
+    }
+  ]
+}

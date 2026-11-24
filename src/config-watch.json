@@ -1,0 +1,23 @@
+{
+  "device": {
+    "name": "REDMI Watch 5",
+    "screenWidth": 432,
+    "screenHeight": 514,
+    "stageWidth": 432,
+    "stageHeight": 243,
+    "shape": "rect"
+  },
+  "audio": {
+    "titleBgm": "/common/title-bgm.opus",
+    "titleTrueBgm": "/common/title-true-bgm.opus",
+    "openingBgm": "/common/opening-bgm.opus",
+    "inGameBgmEnabled": false
+  },
+  "edition": "R18-full",
+  "save": {
+    "maxSlots": 30,
+    "storageKey": "aoitori_rw5_saves_v1",
+    "settingsKey": "aoitori_rw5_settings_v1",
+    "progressKey": "aoitori_rw5_progress_v1"
+  }
+}
