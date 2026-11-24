@@ -4,24 +4,24 @@
     <div if="{{mode === 'title'}}" class="screen">
       <image class="title-bg-full" src="{{titleBgSrc}}" />
 
-      <div class="title-btns" style="top: {{titleShowAkari ? 224 : 264}}px; left: {{titleBgId === 'title03' ? 14 : 108}}px;">
-        <div class="tbtn-wrap" onclick="startNewGame">
-          <image class="tbtn-img" src="/common/ui/tbtn_start.png" />
+      <div class="title-btns" style="top: {{titleBtnsTop}}px; left: {{titleBtnsLeft}}px; width: {{titleBtnW}}px;">
+        <div class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="startNewGame">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_start.png" />
         </div>
-        <div if="{{titleShowAkari}}" class="tbtn-wrap" onclick="startTrueRoute">
-          <image class="tbtn-img" src="/common/ui/tbtn_akari.png" />
+        <div if="{{titleShowAkari}}" class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="startTrueRoute">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_akari.png" />
         </div>
-        <div class="tbtn-wrap" onclick="openTitleSlots">
-          <image class="tbtn-img" src="/common/ui/tbtn_load.png" />
+        <div class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="openTitleSlots">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_load.png" />
         </div>
-        <div class="tbtn-wrap" onclick="openExtraMenu">
-          <image class="tbtn-img" src="/common/ui/tbtn_extra.png" />
+        <div class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="openExtraMenu">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_extra.png" />
         </div>
-        <div class="tbtn-wrap" onclick="openTitleSettings">
-          <image class="tbtn-img" src="/common/ui/tbtn_config.png" />
+        <div class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="openTitleSettings">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_config.png" />
         </div>
-        <div class="tbtn-wrap" onclick="exitApp">
-          <image class="tbtn-img" src="/common/ui/tbtn_exit.png" />
+        <div class="tbtn-wrap" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px; margin-bottom: {{titleBtnGap}}px;" onclick="exitApp">
+          <image class="tbtn-img" style="width: {{titleBtnW}}px; height: {{titleBtnH}}px;" src="/common/ui/tbtn_exit.png" />
         </div>
       </div>
     </div>
@@ -983,6 +983,11 @@ export default {
     titleBgSrc: '/common/images/title01.jpg',
     titleBgId: 'title01',
     titleShowAkari: false,
+    titleBtnsTop: 264,
+    titleBtnsLeft: 108,
+    titleBtnW: 216,
+    titleBtnH: 37,
+    titleBtnGap: 6,
     hasMultiTitleCgs: false,
     titleBgChoiceLabel: '随进度（最新）',
     unlockSummary: '尚未解锁结局',
@@ -1303,6 +1308,12 @@ export default {
     this.titleBgSrc = pres.bg;
     this.titleBgId = pres.activeTitleId || 'title01';
     this.titleShowAkari = !!pres.showAkariRoute;
+    const isTitle03 = this.titleBgId === 'title03';
+    this.titleBtnW = isTitle03 ? 168 : 216;
+    this.titleBtnH = isTitle03 ? 29 : 37;
+    this.titleBtnGap = isTitle03 ? 5 : 6;
+    this.titleBtnsLeft = isTitle03 ? (432 - 20 - this.titleBtnW) : 108;
+    this.titleBtnsTop = isTitle03 ? (this.titleShowAkari ? 276 : 306) : (this.titleShowAkari ? 224 : 264);
     this.hasMultiTitleCgs = pres.unlockedTitles && pres.unlockedTitles.length > 1;
     const choiceMap = {
       auto: '随进度（最新）',

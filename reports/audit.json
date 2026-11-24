@@ -2,10 +2,10 @@
   "rpk": {
     "file": "com.antigravity.aoitori.rw5.debug.1.0.0.rpk",
     "version": "1.0.0",
-    "bytes": 24747409,
-    "expandedBytes": 27473166,
+    "bytes": 24747521,
+    "expandedBytes": 27474903,
     "entries": 3175,
-    "sha256": "01863d931650a0ea0ed805310d39ca179f0efd5353762d83365b6b6f5256b0c8",
+    "sha256": "a55c5909f5079c8ef972e42fb22644e8dab45e0ac790e4ce60d38c4c245bdd17",
     "certificateSha256": "4e8e1ee24968b0dad6d0956a7e14d848b38b22a203f39c389a45d8737bdc4585",
     "zipCRCValid": true,
     "outerSignatureValid": true,
@@ -21,7 +21,7 @@
   },
   "limits": {
     "maxBytes": 25000000,
-    "bytesMargin": 252591,
+    "bytesMargin": 252479,
     "maxEntries": 4100,
     "entriesMargin": 925
   },
